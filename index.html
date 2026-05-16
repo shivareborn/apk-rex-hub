@@ -83,7 +83,6 @@
             gap: 2rem;
             margin-bottom: 3rem;
             flex-wrap: wrap;
-            perspective: 1000px;
         }
         .premium-role-btn {
             position: relative;
@@ -97,7 +96,7 @@
             cursor: pointer;
             color: #fff;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             letter-spacing: 1px;
         }
@@ -113,26 +112,10 @@
         }
         .premium-role-btn:hover::before { left: 100%; }
         .premium-role-btn i { margin-right: 12px; font-size: 1.3rem; }
-        .admin-btn {
-            background: linear-gradient(135deg, rgba(30, 25, 60, 0.7), rgba(45, 30, 80, 0.7));
-            border-color: rgba(139, 92, 246, 0.7);
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
-        }
-        .admin-btn:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.6), 0 0 20px rgba(139, 92, 246, 0.4);
-            border-color: #a78bfa;
-        }
-        .client-btn {
-            background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(10, 50, 70, 0.7));
-            border-color: rgba(6, 182, 212, 0.7);
-            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
-        }
-        .client-btn:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
-            border-color: #22d3ee;
-        }
+        .admin-btn { background: linear-gradient(135deg, rgba(30, 25, 60, 0.7), rgba(45, 30, 80, 0.7)); border-color: rgba(139, 92, 246, 0.7); }
+        .admin-btn:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.6); }
+        .client-btn { background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(10, 50, 70, 0.7)); border-color: rgba(6, 182, 212, 0.7); }
+        .client-btn:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.6); }
         .premium-login-card {
             max-width: 500px;
             margin: 2rem auto;
@@ -141,7 +124,7 @@
             border-radius: 2.5rem;
             padding: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
             animation: cardGlowIn 0.7s ease-out;
             position: relative;
             overflow: hidden;
@@ -156,13 +139,10 @@
             background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent);
             animation: rotateGlow 12s linear infinite;
         }
-        @keyframes rotateGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes cardGlowIn {
-            from { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(5px); }
-            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+            from { opacity: 0; transform: translateY(40px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         .premium-login-card h2 {
             background: linear-gradient(135deg, #ffffff, #c084fc, #a78bfa);
@@ -187,13 +167,7 @@
             position: relative;
             z-index: 1;
         }
-        .premium-input:focus {
-            outline: none;
-            border-color: #c084fc;
-            box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
-            transform: scale(1.01);
-            background: rgba(0, 0, 0, 0.7);
-        }
+        .premium-input:focus { outline: none; border-color: #c084fc; box-shadow: 0 0 20px rgba(192, 132, 252, 0.4); }
         .premium-select {
             width: 100%;
             padding: 1rem 1.2rem;
@@ -223,23 +197,17 @@
             transition: all 0.3s;
             position: relative;
             z-index: 1;
-            overflow: hidden;
-            letter-spacing: 1px;
         }
         @keyframes btnShine {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .premium-login-btn:hover {
-            transform: scale(1.02);
-            filter: brightness(1.1);
-            box-shadow: 0 5px 25px rgba(124, 58, 237, 0.5);
-        }
+        .premium-login-btn:hover { transform: scale(1.02); box-shadow: 0 5px 25px rgba(124, 58, 237, 0.5); }
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 0.5rem; position: relative; z-index: 1; }
         .logout-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
-        .logout-btn { background: rgba(239,68,68,0.8); padding: 0.5rem 1.2rem; border-radius: 2rem; border: none; color: white; cursor: pointer; transition: all 0.3s; }
-        .logout-btn:hover { background: rgba(239,68,68,1); transform: translateY(-2px); }
+        .logout-btn { background: rgba(239,68,68,0.8); padding: 0.5rem 1.2rem; border-radius: 2rem; border: none; color: white; cursor: pointer; }
+        .logout-btn:hover { background: rgba(239,68,68,1); }
         .header { text-align: center; margin-bottom: 2rem; padding: 2rem 1rem; background: rgba(10, 15, 30, 0.5); backdrop-filter: blur(20px); border-radius: 2rem; }
         .logo { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
         .logo i { font-size: 2.8rem; background: linear-gradient(135deg, #c084fc, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -257,8 +225,8 @@
         .input-group { flex: 1 1 200px; }
         .input-group label { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: #a78bfa; }
         .input-group input, .input-group textarea, .input-group select { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 0.7rem 1rem; color: white; font-family: 'Inter', sans-serif; }
-        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; }
-        .btn-primary:hover { transform: scale(1.03); box-shadow: 0 5px 20px rgba(124, 58, 237, 0.4); }
+        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; }
+        .btn-primary:hover { transform: scale(1.03); }
         .btn-danger { background: linear-gradient(95deg, #dc2626, #ef4444); }
         .btn-success { background: linear-gradient(95deg, #059669, #10b981); }
         .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
@@ -269,8 +237,7 @@
         .app-name { font-size: 1.1rem; font-weight: 700; }
         .app-version { font-size: 0.7rem; color: #a78bfa; }
         .app-category { display: inline-block; font-size: 0.6rem; background: rgba(124, 58, 237, 0.2); padding: 0.2rem 0.6rem; border-radius: 1rem; margin-top: 0.5rem; }
-        .premium-download { background: linear-gradient(95deg, #7c3aed, #c084fc); width: 100%; padding: 0.6rem; border-radius: 2rem; border: none; color: white; font-weight: 600; cursor: pointer; margin-top: 0.8rem; transition: all 0.3s; font-family: 'Inter', sans-serif; }
-        .premium-download:hover { transform: scale(1.02); }
+        .premium-download { background: linear-gradient(95deg, #7c3aed, #c084fc); width: 100%; padding: 0.6rem; border-radius: 2rem; border: none; color: white; font-weight: 600; cursor: pointer; margin-top: 0.8rem; font-family: 'Inter', sans-serif; }
         .feedback-section { margin-top: 0.8rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
         .feedback-item { font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 0.3rem; border-radius: 0.5rem; margin-bottom: 0.3rem; }
         .stats-row { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
@@ -283,64 +250,17 @@
         .hidden { display: none; }
         .country-badge { background: #3b82f6; border-radius: 20px; padding: 2px 8px; font-size: 0.7rem; margin-left: 8px; }
         .banned-badge { background: rgba(220,38,38,0.3); border-color: #ef4444; color: #fca5a5; }
-        .ban-btn { background: rgba(220,38,38,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 8px; transition: all 0.2s; }
-        .ban-btn:hover { background: #dc2626; transform: scale(1.05); }
+        .ban-btn { background: rgba(220,38,38,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 8px; }
+        .ban-btn:hover { background: #dc2626; }
         .unban-btn { background: rgba(34,197,94,0.8); }
-        .unban-btn:hover { background: #22c55e; }
-        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 5px; transition: all 0.2s; }
-        .delete-user-btn:hover { background: #ef4444; transform: scale(1.05); }
-        
-        /* Sync Status Styles */
-        .sync-status-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(95deg, #059669, #10b981);
-            padding: 0.5rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.85rem;
-            z-index: 3000;
-            animation: slideDown 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-        .sync-status-bar.syncing {
-            background: linear-gradient(95deg, #d97706, #f59e0b);
-        }
-        .sync-status-bar.error {
-            background: linear-gradient(95deg, #dc2626, #ef4444);
-        }
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-        .auto-sync-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            color: #10b981;
-            margin-top: 0.5rem;
-        }
-        .auto-sync-indicator i {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
+        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 5px; }
+        .delete-user-btn:hover { background: #ef4444; }
+        .sync-bar { position: fixed; top: 0; left: 0; right: 0; background: #059669; padding: 0.5rem; text-align: center; font-weight: 600; font-size: 0.8rem; z-index: 3000; display: none; }
+        .sync-bar.show { display: block; animation: slideDown 0.3s ease; }
+        .sync-bar.error { background: #dc2626; }
+        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
         footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.6; }
-        @media (max-width: 700px) { 
-            .container { padding: 1rem; } 
-            .logo h1 { font-size: 1.8rem; } 
-            .premium-role-btn { padding: 0.8rem 1.8rem; font-size: 1rem; } 
-            .sync-status-bar { font-size: 0.7rem; padding: 0.4rem; }
-        }
+        @media (max-width: 700px) { .container { padding: 1rem; } .logo h1 { font-size: 1.8rem; } .premium-role-btn { padding: 0.8rem 1.8rem; font-size: 1rem; } }
     </style>
 </head>
 <body>
@@ -352,7 +272,7 @@
 </div>
 <div class="particle-field" id="particleField"></div>
 <div class="noise-overlay"></div>
-<div id="syncStatusBar" class="sync-status-bar hidden"></div>
+<div class="sync-bar" id="syncBar"></div>
 
 <div class="container">
     <div id="roleSelector" class="role-selector">
@@ -365,7 +285,7 @@
         <input type="password" id="adminPassword" class="premium-input" placeholder="Enter Master Password">
         <button class="premium-login-btn" onclick="adminLogin()"><i class="fas fa-unlock-alt"></i> Access Dashboard</button>
         <div id="adminLoginError" class="error-msg"></div>
-        <p style="margin-top:1rem; font-size:0.7rem; text-align:center; opacity:0.7;">🔐 Secure Access: <strong style="color:#c084fc;">REX0303</strong></p>
+        <p style="margin-top:1rem; font-size:0.7rem; text-align:center; opacity:0.7;">🔐 Password: <strong style="color:#c084fc;">REX0303</strong></p>
     </div>
 
     <div id="clientLoginPanel" class="premium-login-card hidden">
@@ -390,46 +310,45 @@
         <input type="email" id="clientEmail" class="premium-input" placeholder="Email Address *">
         <button class="premium-login-btn" onclick="clientLogin()"><i class="fas fa-meteor"></i> Enter Hub</button>
         <div id="clientLoginError" class="error-msg"></div>
-        <p style="margin-top:1rem; font-size:0.7rem; text-align:center;"><i class="fas fa-save"></i> Auto-sync enabled | Updates instantly</p>
     </div>
 
     <!-- ADMIN DASHBOARD -->
     <div id="adminDashboard" class="hidden">
         <div class="logout-area">
-            <div><i class="fas fa-shield-alt"></i> Admin Mode | <span class="auto-sync-indicator"><i class="fas fa-circle"></i> Auto-Sync Active</span></div>
+            <div><i class="fas fa-shield-alt"></i> Admin Mode | <span style="color:#10b981;">🟢 Live Sync</span></div>
             <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
         <div class="header">
             <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex Premium App Hub</h1></div>
-            <div class="tagline">Admin Panel - Auto-Sync Enabled | All Changes Go Live Instantly</div>
+            <div class="tagline">Admin Panel - All changes sync to all devices</div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-plus-circle"></i> Add New App (Auto-Publishes to Website)</h2>
+            <h2><i class="fas fa-plus-circle"></i> Add New App (Syncs to All Devices)</h2>
             <div class="form-grid">
-                <div class="input-group"><label>Name *</label><input type="text" id="appName" placeholder="Ej: Spotify Premium"></div>
+                <div class="input-group"><label>Name *</label><input type="text" id="appName" placeholder="Spotify Premium"></div>
                 <div class="input-group"><label>Version *</label><input type="text" id="appVersion" placeholder="8.9.18"></div>
                 <div class="input-group"><label>Icon URL *</label><input type="text" id="logoUrl" placeholder="https://..."></div>
-                <div class="input-group"><label>Category</label><input type="text" id="appCategory" placeholder="Music, Games, etc"></div>
+                <div class="input-group"><label>Category</label><input type="text" id="appCategory" placeholder="Music, Games"></div>
                 <div class="input-group"><label>Description</label><textarea id="appDesc" rows="2" placeholder="App description..."></textarea></div>
                 <div class="input-group"><label>APK Link *</label><input type="text" id="downloadLink" placeholder="https://...apk"></div>
                 <div class="input-group"><label>Type</label><select id="appType" style="background:rgba(0,0,0,0.5); border-radius:1rem; padding:0.7rem; color:white;"><option value="featured">Featured</option><option value="recent">Recent</option></select></div>
-                <div class="input-group"><button class="btn-primary" id="addBtn"><i class="fas fa-upload"></i> Publish & Auto-Sync APK</button></div>
+                <div class="input-group"><button class="btn-primary" onclick="addAPK()"><i class="fas fa-cloud-upload-alt"></i> Publish & Sync APK</button></div>
             </div>
-            <p style="font-size:0.7rem; margin-top:0.5rem; opacity:0.7; text-align:center;">
-                <i class="fas fa-sync-alt fa-spin"></i> APK will automatically sync to GitHub and appear on all devices within 60 seconds
-            </p>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-users"></i> Registered Clients</h2>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2><i class="fas fa-users"></i> Registered Clients</h2>
+                <button class="btn-primary" onclick="syncClientsToGitHub()" style="font-size:0.7rem; padding:0.5rem 1rem;"><i class="fas fa-sync-alt"></i> Sync Clients to Server</button>
+            </div>
             <div id="adminClientsList" style="max-height: 350px; overflow-y: auto; margin-top: 1rem;"></div>
         </div>
 
-        <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="adminSearch" class="search-input" placeholder="Search APK..."></div></div>
+        <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="adminSearch" class="search-input" placeholder="Search APK..." oninput="renderAdmin()"></div></div>
         <div class="section-header"><div class="section-title"><i class="fas fa-database"></i> All APKs</div><div class="stat-item"><i class="fas fa-mobile-alt"></i> <span id="adminTotalApps">0</span> Apps</div></div>
         <div id="adminAppsContainer" class="apps-grid"></div>
-        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium App Hub - Auto-Sync Active</footer>
+        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium - Synced to All Devices</footer>
     </div>
 
     <!-- CLIENT DASHBOARD -->
@@ -440,33 +359,35 @@
         </div>
         <div class="header">
             <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex | Premium App Hub</h1></div>
-            <div class="tagline">Always up-to-date | Auto-synced apps</div>
-            <div class="badge-premium"><span class="badge"><i class="fas fa-check-circle"></i> 100% Secure</span><span class="badge"><i class="fas fa-bolt"></i> Live Updates</span></div>
+            <div class="tagline">Always updated with latest apps</div>
+            <div class="badge-premium"><span class="badge"><i class="fas fa-check-circle"></i> Secure</span><span class="badge"><i class="fas fa-bolt"></i> Fast</span></div>
         </div>
-        <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="clientSearch" class="search-input" placeholder="Find your favorite game or app..."></div></div>
+        <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="clientSearch" class="search-input" placeholder="Find apps..." oninput="renderClient()"></div></div>
         <div class="stats-row"><div class="stat-item"><i class="fas fa-mobile-alt"></i> <span id="clientTotalApps">0</span> Apps</div><div class="stat-item"><i class="fas fa-download"></i> +15K Downloads</div></div>
         <div class="section-header"><div class="section-title"><i class="fas fa-fire"></i> Featured Apps</div></div>
         <div id="featuredGrid" class="apps-grid"></div>
         <div class="section-header"><div class="section-title"><i class="fas fa-clock"></i> Recent Updates</div></div>
         <div id="recentGrid" class="apps-grid"></div>
-        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium App Hub - Live Synced</footer>
+        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium App Hub</footer>
     </div>
 </div>
 
 <script>
     // ==========================================
-    // 🔧 CONFIGURATION - CHANGE THESE 3 LINES 🔧
+    // CONFIGURATION - FILL THESE 3 LINES
     // ==========================================
-    const GITHUB_USERNAME = "shivareborn";  // ← CHANGE THIS
-    const GITHUB_REPO = "apk-rex-hub";               // ← Repository name
-    const GITHUB_TOKEN = "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";         // ← PASTE YOUR TOKEN HERE
+    const GITHUB_USERNAME = "shivareborn";
+    const GITHUB_REPO = "apk-rex-hub";
+    const GITHUB_TOKEN = "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";
     // ==========================================
-    
+
+    // Cloud storage keys
+    const CLOUD_APKS = "apk_rex_cloud_apks";
+    const CLOUD_CLIENTS = "apk_rex_cloud_clients";
+    const LOCAL_APKS = "apk_rex_local_apks";
+    const LOCAL_CLIENTS = "apk_rex_local_clients";
+
     let apks = [], clients = [], currentRole = null, currentClient = null;
-    const STORAGE_APKS = "apk_rex_complete_db", STORAGE_CLIENTS = "apk_rex_clients_db";
-    let searchTermAdmin = "", searchTermClient = "";
-    let isSyncing = false;
-    let lastSyncTime = null;
 
     const defaultApks = [
         { id: "1", name: "1win", version: "1.3.22", date: "March 19, 2026", category: "Betting", type: "featured", icon: "https://picsum.photos/id/104/100/100", description: "The best platform", downloadUrl: "https://example.com/1win.apk", feedbacks: [] },
@@ -475,185 +396,140 @@
         { id: "4", name: "Poppy Playtime", version: "0.4.3", date: "May 11, 2026", category: "Games", type: "recent", icon: "https://picsum.photos/id/26/100/100", description: "Horror and puzzles", downloadUrl: "https://example.com/poppy.apk", feedbacks: [] }
     ];
 
-    // ============ DATA MANAGEMENT ============
-    function loadData() {
-        const stored = localStorage.getItem(STORAGE_APKS);
-        if(stored) {
-            try {
-                apks = JSON.parse(stored);
-            } catch(e) {
-                apks = JSON.parse(JSON.stringify(defaultApks));
-            }
-        } else { 
-            apks = JSON.parse(JSON.stringify(defaultApks)); 
-            saveApks(); 
-        }
-        apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; if(!a.date) a.date = new Date().toLocaleDateString(); });
-        
-        const storedClients = localStorage.getItem(STORAGE_CLIENTS);
-        if(storedClients) {
-            try {
-                clients = JSON.parse(storedClients);
-            } catch(e) {
-                clients = [];
-            }
-        } else clients = [];
-    }
-    
-    function saveApks() { localStorage.setItem(STORAGE_APKS, JSON.stringify(apks)); }
-    function saveClients() { localStorage.setItem(STORAGE_CLIENTS, JSON.stringify(clients)); }
-    function showToast(msg, type) { 
-        let t = document.createElement('div'); 
-        t.className = 'toast'; 
-        t.innerHTML = (type==='success'?'✨ ':(type==='error'?'❌ ':'⚠️ '))+msg; 
-        document.body.appendChild(t); 
-        setTimeout(()=>t.remove(),3000); 
-    }
-    function escapeHtml(str) { return String(str || '').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); }
-
-    // ============ SYNC STATUS BAR ============
-    function showSyncStatus(msg, type) {
-        const bar = document.getElementById('syncStatusBar');
-        bar.className = 'sync-status-bar ' + type;
-        bar.innerHTML = msg;
-        bar.classList.remove('hidden');
-        if(type === 'success') {
-            setTimeout(() => bar.classList.add('hidden'), 3000);
-        }
-    }
-
-    // ============ AUTO SYNC FUNCTION ============
-    async function autoSyncToGitHub() {
-        if (!GITHUB_TOKEN || GITHUB_TOKEN === "YOUR_GITHUB_TOKEN") {
-            showToast("GitHub token not configured! Cannot auto-sync.", "error");
-            return false;
-        }
-        if (isSyncing) {
-            showToast("Sync already in progress...", "info");
-            return false;
-        }
-        
-        isSyncing = true;
-        showSyncStatus('<i class="fas fa-sync-alt fa-spin"></i> Syncing to GitHub... Please wait', 'syncing');
-        
+    // ============ LOAD DATA FROM GITHUB (CLOUD) ============
+    async function loadFromCloud() {
         try {
-            // Generate updated HTML with current APK data
-            const updatedHTML = generateUpdatedHTML();
-            const content = btoa(unescape(encodeURIComponent(updatedHTML)));
+            // Load APKs from GitHub
+            const apkUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/main/apks.json`;
+            const apkRes = await fetch(apkUrl + '?t=' + Date.now());
+            if (apkRes.ok) {
+                apks = await apkRes.json();
+                localStorage.setItem(LOCAL_APKS, JSON.stringify(apks));
+            } else {
+                // Fallback to local
+                const local = localStorage.getItem(LOCAL_APKS);
+                apks = local ? JSON.parse(local) : JSON.parse(JSON.stringify(defaultApks));
+            }
+
+            // Load Clients from GitHub
+            const clientUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/main/clients.json`;
+            const clientRes = await fetch(clientUrl + '?t=' + Date.now());
+            if (clientRes.ok) {
+                clients = await clientRes.json();
+                localStorage.setItem(LOCAL_CLIENTS, JSON.stringify(clients));
+            } else {
+                const local = localStorage.getItem(LOCAL_CLIENTS);
+                clients = local ? JSON.parse(local) : [];
+            }
+        } catch(e) {
+            console.log('Offline mode - using local data');
+            const localApks = localStorage.getItem(LOCAL_APKS);
+            apks = localApks ? JSON.parse(localApks) : JSON.parse(JSON.stringify(defaultApks));
+            const localClients = localStorage.getItem(LOCAL_CLIENTS);
+            clients = localClients ? JSON.parse(localClients) : [];
+        }
+        apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; });
+    }
+
+    function saveLocal() {
+        localStorage.setItem(LOCAL_APKS, JSON.stringify(apks));
+        localStorage.setItem(LOCAL_CLIENTS, JSON.stringify(clients));
+    }
+
+    // ============ SYNC TO GITHUB ============
+    async function syncToGitHub(data, filename, message) {
+        if (!GITHUB_TOKEN || GITHUB_TOKEN.includes("YOUR_GITHUB_TOKEN")) {
+            showToast("Token not configured. Download HTML instead.", "error");
+            return false;
+        }
+        try {
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+            const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${filename}`;
             
-            // Step 1: Get current file SHA from GitHub
-            const getUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/index.html`;
-            const getHeaders = {
-                'Authorization': `token ${GITHUB_TOKEN}`,
-                'Accept': 'application/vnd.github.v3+json'
-            };
-            
+            // Get SHA if file exists
             let sha = '';
             try {
-                const getResponse = await fetch(getUrl, { headers: getHeaders });
-                if (getResponse.ok) {
-                    const data = await getResponse.json();
-                    sha = data.sha;
-                } else if (getResponse.status === 404) {
-                    // File doesn't exist yet, that's ok
-                } else if (getResponse.status === 401) {
-                    throw new Error('Invalid GitHub token');
-                } else {
-                    throw new Error(`GitHub API error: ${getResponse.status}`);
-                }
-            } catch(e) {
-                if (e.message === 'Invalid GitHub token') throw e;
-                // Continue even if GET fails
-            }
-            
-            // Step 2: Update/Create file on GitHub
-            const putUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/index.html`;
-            const body = {
-                message: `🔄 Auto-Sync: APK database updated (${new Date().toLocaleString()})`,
-                content: content,
-                branch: 'main'
-            };
+                const getRes = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}` } });
+                if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
+            } catch(e) {}
+
+            const body = { message: message, content: content, branch: 'main' };
             if (sha) body.sha = sha;
-            
-            const putResponse = await fetch(putUrl, {
+
+            const res = await fetch(url, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `token ${GITHUB_TOKEN}`,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/vnd.github.v3+json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(body)
             });
-            
-            if (putResponse.ok) {
-                lastSyncTime = new Date();
-                showSyncStatus('<i class="fas fa-check-circle"></i> ✅ Synced! Website updating on all devices (1-2 min)', 'success');
-                showToast("Auto-sync complete! Visible on all devices in 1-2 minutes", "success");
-                isSyncing = false;
-                return true;
-            } else {
-                const errorData = await putResponse.json();
-                throw new Error(errorData.message || 'Failed to update');
-            }
-        } catch (error) {
-            console.error('Sync error:', error);
-            showSyncStatus('<i class="fas fa-exclamation-triangle"></i> Sync failed: ' + escapeHtml(error.message), 'error');
-            showToast("Auto-sync failed: " + error.message, "error");
-            isSyncing = false;
+            return res.ok;
+        } catch(e) {
+            console.error('Sync error:', e);
             return false;
         }
     }
 
-    function generateUpdatedHTML() {
-        const currentHTML = document.documentElement.outerHTML;
-        const updatedApks = JSON.stringify(apks, null, 8);
-        const apksRegex = /const defaultApks = \[[\s\S]*?\];/;
-        const newApksDeclaration = `const defaultApks = ${updatedApks};`;
-        
-        let updatedHTML = currentHTML.replace(apksRegex, newApksDeclaration);
-        updatedHTML = updatedHTML.replace(
-            /const GITHUB_USERNAME = ".*";/,
-            `const GITHUB_USERNAME = "${GITHUB_USERNAME}";`
-        );
-        updatedHTML = updatedHTML.replace(
-            /const GITHUB_REPO = ".*";/,
-            `const GITHUB_REPO = "${GITHUB_REPO}";`
-        );
-        updatedHTML = updatedHTML.replace(
-            /const GITHUB_TOKEN = ".*";/,
-            `const GITHUB_TOKEN = "${GITHUB_TOKEN}";`
-        );
-        
-        return updatedHTML;
+    async function syncAPKsToGitHub() {
+        showSyncBar('🔄 Syncing APKs...', '');
+        const ok = await syncToGitHub(apks, 'apks.json', `Update APKs: ${apks.length} apps`);
+        if (ok) {
+            showSyncBar('✅ APKs Synced! Visible on all devices in 1-2 min', '');
+            setTimeout(() => hideSyncBar(), 3000);
+            showToast("APKs synced to all devices!", "success");
+        } else {
+            showSyncBar('❌ Sync failed. Check token or internet.', 'error');
+            showToast("Sync failed! Download HTML instead", "error");
+        }
     }
 
-    // ============ MANUAL DOWNLOAD (Backup) ============
-    function downloadUpdatedHTML() {
-        const updatedHTML = generateUpdatedHTML();
-        const blob = new Blob([updatedHTML], { type: 'text/html' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'index.html';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        showToast("Backup HTML downloaded!", "success");
+    async function syncClientsToGitHub() {
+        showSyncBar('🔄 Syncing Clients...', '');
+        const ok = await syncToGitHub(clients, 'clients.json', `Update Clients: ${clients.length} users`);
+        if (ok) {
+            showSyncBar('✅ Clients Synced! Admin panel updated everywhere', '');
+            setTimeout(() => hideSyncBar(), 3000);
+            showToast("Clients synced to server!", "success");
+        } else {
+            showSyncBar('❌ Client sync failed', 'error');
+            showToast("Client sync failed", "error");
+        }
+    }
+
+    function showSyncBar(msg, type) {
+        const bar = document.getElementById('syncBar');
+        bar.textContent = msg;
+        bar.className = 'sync-bar show ' + type;
+    }
+    function hideSyncBar() {
+        document.getElementById('syncBar').className = 'sync-bar';
+    }
+
+    function showToast(msg, type) {
+        const t = document.createElement('div');
+        t.className = 'toast';
+        t.innerHTML = (type==='success'?'✨ ':(type==='error'?'❌ ':'⚠️ ')) + msg;
+        document.body.appendChild(t);
+        setTimeout(() => t.remove(), 3000);
+    }
+
+    function escapeHtml(str) {
+        return String(str || '').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]);
     }
 
     // ============ ROLE SELECTION ============
     function selectRole(role) {
         document.getElementById('roleSelector').classList.add('hidden');
-        if(role === 'admin') { 
-            document.getElementById('adminLoginPanel').classList.remove('hidden'); 
+        if(role === 'admin') {
+            document.getElementById('adminLoginPanel').classList.remove('hidden');
             document.getElementById('clientLoginPanel').classList.add('hidden');
-        } else { 
-            document.getElementById('clientLoginPanel').classList.remove('hidden'); 
+        } else {
+            document.getElementById('clientLoginPanel').classList.remove('hidden');
             document.getElementById('adminLoginPanel').classList.add('hidden');
             const savedEmail = localStorage.getItem('last_client_email');
-            if(savedEmail) { 
-                document.getElementById('clientEmail').value = savedEmail; 
+            if(savedEmail) {
+                document.getElementById('clientEmail').value = savedEmail;
                 setTimeout(() => autoClientLogin(), 100);
             }
         }
@@ -664,8 +540,8 @@
         const existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
         if(existing && !existing.isBanned) {
             document.getElementById('clientName').value = existing.name;
-            const countryOption = Array.from(document.getElementById('clientCountry').options).find(opt => opt.value === existing.country);
-            if(countryOption) document.getElementById('clientCountry').value = existing.country;
+            const opt = Array.from(document.getElementById('clientCountry').options).find(o => o.value === existing.country);
+            if(opt) document.getElementById('clientCountry').value = existing.country;
             performClientLogin(true);
         }
     }
@@ -675,53 +551,54 @@
             currentRole = 'admin';
             document.getElementById('adminLoginPanel').classList.add('hidden');
             document.getElementById('adminDashboard').classList.remove('hidden');
-            renderAdmin(); 
-            renderClientList();
-            showToast("Welcome Admin! Auto-Sync is ACTIVE", "success");
-        } else { 
-            document.getElementById('adminLoginError').innerText = "Incorrect password"; 
+            loadFromCloud().then(() => {
+                renderAdmin();
+                renderClientList();
+            });
+            showToast("Welcome Admin!", "success");
+        } else {
+            document.getElementById('adminLoginError').innerText = "Incorrect password";
         }
     }
 
     function clientLogin() { performClientLogin(false); }
 
     function performClientLogin(isAuto) {
-        let name = document.getElementById('clientName').value.trim();
-        let country = document.getElementById('clientCountry').value;
-        let email = document.getElementById('clientEmail').value.trim();
-        
+        const name = document.getElementById('clientName').value.trim();
+        const country = document.getElementById('clientCountry').value;
+        const email = document.getElementById('clientEmail').value.trim();
+
         if(!name) { document.getElementById('clientLoginError').innerText = "Full name required"; return; }
         if(!email || !email.includes('@')) { document.getElementById('clientLoginError').innerText = "Valid email required"; return; }
-        
+
         let existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
-        if(existing && existing.isBanned) { 
-            document.getElementById('clientLoginError').innerHTML = '<i class="fas fa-gavel"></i> Account Banned! Contact admin.'; 
-            return; 
+        if(existing && existing.isBanned) {
+            document.getElementById('clientLoginError').innerHTML = '<i class="fas fa-gavel"></i> Account Banned!';
+            return;
         }
-        
+
         if(existing) {
             existing.name = name;
             existing.country = country;
             existing.lastLogin = new Date().toISOString();
             currentClient = existing;
-            saveClients();
-            if(!isAuto) showToast(`Welcome back ${escapeHtml(name)}!`, "success");
         } else {
-            const newClient = { 
-                id: Date.now().toString(), 
-                name: name, 
-                country: country, 
-                email: email, 
-                isBanned: false, 
-                registrationDate: new Date().toISOString(), 
-                lastLogin: new Date().toISOString() 
+            currentClient = {
+                id: Date.now().toString(),
+                name: name,
+                country: country,
+                email: email,
+                isBanned: false,
+                registrationDate: new Date().toISOString(),
+                lastLogin: new Date().toISOString()
             };
-            clients.push(newClient);
-            saveClients();
-            currentClient = newClient;
-            showToast(`Registered! Welcome ${escapeHtml(name)}`, "success");
+            clients.push(currentClient);
         }
-        
+
+        saveLocal();
+        // Auto-sync clients to cloud so admin sees them
+        syncClientsToGitHub();
+
         localStorage.setItem('last_client_email', email);
         currentRole = 'client';
         document.getElementById('clientLoginPanel').classList.add('hidden');
@@ -729,140 +606,121 @@
         document.getElementById('clientUserNameDisplay').innerHTML = escapeHtml(currentClient.name);
         document.getElementById('clientCountryDisplay').innerHTML = currentClient.country;
         renderClient();
+        showToast(`Welcome ${escapeHtml(name)}!`, "success");
     }
 
-    function logout() { 
-        currentRole = null; 
-        currentClient = null; 
-        document.getElementById('adminDashboard').classList.add('hidden'); 
-        document.getElementById('clientDashboard').classList.add('hidden'); 
-        document.getElementById('roleSelector').classList.remove('hidden'); 
-        document.getElementById('adminLoginPanel').classList.add('hidden'); 
-        document.getElementById('clientLoginPanel').classList.add('hidden'); 
-        document.getElementById('clientName').value = '';
-        document.getElementById('clientEmail').value = '';
-        document.getElementById('syncStatusBar').classList.add('hidden');
+    function logout() {
+        currentRole = null;
+        currentClient = null;
+        document.getElementById('adminDashboard').classList.add('hidden');
+        document.getElementById('clientDashboard').classList.add('hidden');
+        document.getElementById('roleSelector').classList.remove('hidden');
+        document.getElementById('adminLoginPanel').classList.add('hidden');
+        document.getElementById('clientLoginPanel').classList.add('hidden');
+        hideSyncBar();
     }
 
-    function toggleBan(id) { 
-        let c = clients.find(c => c.id === id); 
-        if(c) { 
-            c.isBanned = !c.isBanned; 
-            saveClients(); 
-            renderClientList(); 
-            showToast(`${c.name} ${c.isBanned ? 'BANNED ❌' : 'Unbanned ✅'}`, "info"); 
-        } 
+    function toggleBan(id) {
+        const c = clients.find(c => c.id === id);
+        if(c) { c.isBanned = !c.isBanned; saveLocal(); syncClientsToGitHub(); renderClientList(); }
     }
 
     function deleteUser(id) {
-        let c = clients.find(c => c.id === id);
-        if(c && confirm(`Are you sure you want to permanently delete ${c.name} from the database?`)) {
+        const c = clients.find(c => c.id === id);
+        if(c && confirm(`Delete ${c.name} permanently?`)) {
             clients = clients.filter(c => c.id !== id);
-            saveClients();
+            saveLocal();
+            syncClientsToGitHub();
             renderClientList();
-            showToast(`${c.name} has been deleted from database`, "success");
         }
     }
 
-    function renderClientList() { 
-        const container = document.getElementById('adminClientsList'); 
-        if(!container) return; 
-        if(clients.length === 0) { 
-            container.innerHTML = '<div style="padding:1rem; text-align:center;">No registered clients yet</div>'; 
-            return; 
+    function renderClientList() {
+        const container = document.getElementById('adminClientsList');
+        if(!container) return;
+        if(clients.length === 0) {
+            container.innerHTML = '<div style="padding:1rem; text-align:center; opacity:0.6;">No clients yet. They appear after registering.</div>';
+            return;
         }
         container.innerHTML = clients.map(c => `
-            <div style="background:rgba(255,255,255,0.05); border-radius:1rem; padding:0.8rem; margin-bottom:0.5rem; border-left:3px solid ${c.isBanned ? '#ef4444' : '#c084fc'}">
-                <div><strong>${escapeHtml(c.name)}</strong> <span class="country-badge">${escapeHtml(c.country)}</span> ${c.isBanned ? '<span class="badge banned-badge">BLACKLISTED</span>' : ''}</div>
-                <div style="font-size:0.75rem;">📧 ${escapeHtml(c.email)}</div>
-                <div style="font-size:0.65rem; opacity:0.6;">📅 Registered: ${new Date(c.registrationDate).toLocaleDateString()} | Last login: ${new Date(c.lastLogin).toLocaleString()}</div>
-                <div style="margin-top: 8px;">
-                    <button class="ban-btn ${c.isBanned ? 'unban-btn' : ''}" onclick="toggleBan('${c.id}')">${c.isBanned ? '✓ Unban User' : '🔨 Ban User'}</button>
-                    <button class="delete-user-btn" onclick="deleteUser('${c.id}')"><i class="fas fa-trash-alt"></i> Delete Permanently</button>
-                </div>
+            <div style="background:rgba(255,255,255,0.05); border-radius:1rem; padding:0.8rem; margin-bottom:0.5rem; border-left:3px solid ${c.isBanned?'#ef4444':'#c084fc'}">
+                <strong>${escapeHtml(c.name)}</strong> <span class="country-badge">${escapeHtml(c.country)}</span> ${c.isBanned?'<span class="badge banned-badge">BANNED</span>':''}
+                <div style="font-size:0.7rem;">📧 ${escapeHtml(c.email)} | 🕐 ${new Date(c.lastLogin).toLocaleString()}</div>
+                <button class="ban-btn ${c.isBanned?'unban-btn':''}" onclick="toggleBan('${c.id}')">${c.isBanned?'✓ Unban':'🔨 Ban'}</button>
+                <button class="delete-user-btn" onclick="deleteUser('${c.id}')">🗑️ Delete</button>
             </div>
-        `).join(''); 
+        `).join('');
     }
 
-    // ============ ADD APK WITH AUTO-SYNC ============
-    async function addAPK() { 
-        let n = document.getElementById('appName').value.trim(); 
-        let i = document.getElementById('logoUrl').value.trim(); 
-        let l = document.getElementById('downloadLink').value.trim(); 
-        if(!n || !i || !l) { showToast("Name, Icon & Link required", "error"); return; } 
-        
-        const newApk = { 
-            id: Date.now().toString(), 
-            name: n, 
-            version: document.getElementById('appVersion').value.trim() || "1.0", 
-            date: new Date().toLocaleDateString(), 
-            category: document.getElementById('appCategory').value.trim() || "General", 
-            type: document.getElementById('appType').value, 
-            icon: i, 
-            description: document.getElementById('appDesc').value.trim() || "", 
-            downloadUrl: l, 
-            feedbacks: [] 
-        };
-        
-        apks.unshift(newApk); 
-        saveApks(); 
-        renderAdmin(); 
-        
+    // ============ ADD APK ============
+    async function addAPK() {
+        const n = document.getElementById('appName').value.trim();
+        const i = document.getElementById('logoUrl').value.trim();
+        const l = document.getElementById('downloadLink').value.trim();
+        if(!n || !i || !l) { showToast("Name, Icon & Link required", "error"); return; }
+
+        apks.unshift({
+            id: Date.now().toString(),
+            name: n,
+            version: document.getElementById('appVersion').value.trim() || "1.0",
+            date: new Date().toLocaleDateString(),
+            category: document.getElementById('appCategory').value.trim() || "General",
+            type: document.getElementById('appType').value,
+            icon: i,
+            description: document.getElementById('appDesc').value.trim() || "",
+            downloadUrl: l,
+            feedbacks: []
+        });
+
+        saveLocal();
+        renderAdmin();
+
         // Clear form
-        document.getElementById('appName').value = '';
-        document.getElementById('appVersion').value = '';
-        document.getElementById('logoUrl').value = '';
-        document.getElementById('appCategory').value = '';
-        document.getElementById('appDesc').value = '';
-        document.getElementById('downloadLink').value = '';
-        
-        showToast("APK Published! Auto-syncing to GitHub...", "success"); 
-        
-        // AUTO SYNC IMMEDIATELY
-        await autoSyncToGitHub();
+        ['appName','appVersion','logoUrl','appCategory','appDesc','downloadLink'].forEach(id => {
+            document.getElementById(id).value = '';
+        });
+
+        // AUTO SYNC
+        await syncAPKsToGitHub();
     }
 
-    function deleteAPK(id) { 
-        if(confirm("Delete this APK?")) { 
-            apks = apks.filter(a => a.id !== id); 
-            saveApks(); 
-            renderAdmin(); 
-            if(currentRole === 'client') renderClient(); 
-            showToast("APK deleted. Click Sync to update website", "info"); 
-        } 
-    }
-    
-    function editAPK(id) { 
-        let a = apks.find(a => a.id === id); 
-        if(a){ 
-            let n = prompt("New name:", a.name); 
-            if(n) a.name = n; 
-            let v = prompt("Version:", a.version); 
-            if(v) a.version = v; 
-            let u = prompt("Icon URL:", a.icon); 
-            if(u) a.icon = u; 
-            let d = prompt("Download link:", a.downloadUrl); 
-            if(d) a.downloadUrl = d; 
-            saveApks(); 
-            renderAdmin(); 
-            if(currentRole === 'client') renderClient(); 
-            showToast("APK updated. Click Sync to update website", "success"); 
-        } 
-    }
-    
-    function deleteFeedback(apkId, idx) { 
-        let a = apks.find(a => a.id === apkId); 
-        if(a && a.feedbacks[idx]){ 
-            a.feedbacks.splice(idx,1); 
-            saveApks(); 
-            renderAdmin(); 
-            showToast("Feedback removed", "info"); 
-        } 
+    function deleteAPK(id) {
+        if(confirm("Delete this APK?")) {
+            apks = apks.filter(a => a.id !== id);
+            saveLocal();
+            renderAdmin();
+            syncAPKsToGitHub();
+            showToast("APK deleted & synced", "info");
+        }
     }
 
-    function renderAdmin() { 
-        let f = apks.filter(a => a.name.toLowerCase().includes(searchTermAdmin.toLowerCase())); 
-        document.getElementById('adminTotalApps').innerText = f.length; 
+    function editAPK(id) {
+        const a = apks.find(a => a.id === id);
+        if(a) {
+            const n = prompt("Name:", a.name); if(n) a.name = n;
+            const v = prompt("Version:", a.version); if(v) a.version = v;
+            const u = prompt("Icon URL:", a.icon); if(u) a.icon = u;
+            const d = prompt("Download link:", a.downloadUrl); if(d) a.downloadUrl = d;
+            saveLocal();
+            renderAdmin();
+            syncAPKsToGitHub();
+            showToast("APK updated & synced", "success");
+        }
+    }
+
+    function deleteFeedback(apkId, idx) {
+        const a = apks.find(a => a.id === apkId);
+        if(a && a.feedbacks[idx]) {
+            a.feedbacks.splice(idx, 1);
+            saveLocal();
+            renderAdmin();
+        }
+    }
+
+    function renderAdmin() {
+        const search = document.getElementById('adminSearch')?.value?.toLowerCase() || '';
+        const f = apks.filter(a => a.name.toLowerCase().includes(search));
+        document.getElementById('adminTotalApps').innerText = f.length;
         document.getElementById('adminAppsContainer').innerHTML = f.map(a => `
             <div class="apk-card">
                 <div class="app-icon"><img src="${escapeHtml(a.icon)}" onerror="this.src='https://placehold.co/65'"></div>
@@ -870,7 +728,7 @@
                 <div class="app-version">${escapeHtml(a.version)}</div>
                 <div class="app-category">${escapeHtml(a.category)}</div>
                 <div style="margin-top:0.8rem;">
-                    <button class="btn-primary" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.id}')">✏️ Edit</button> 
+                    <button class="btn-primary" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.id}')">✏️ Edit</button>
                     <button class="btn-primary btn-danger" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.id}')">🗑️ Delete</button>
                 </div>
                 <div class="feedback-section">
@@ -878,35 +736,39 @@
                     ${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(fb.user)}</span>: ${escapeHtml(fb.comment)} <span onclick="deleteFeedback('${a.id}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') || '<div style="opacity:0.6;">No feedback</div>'}
                 </div>
             </div>
-        `).join(''); 
+        `).join('');
     }
 
-    function clientAddFeedback(id) { 
-        if(!currentClient) return; 
-        let c = document.getElementById(`feedback_${id}`)?.value; 
-        if(!c?.trim()){ showToast("Write a comment", "error"); return; } 
-        let a = apks.find(a => a.id === id); 
-        if(a){ 
-            a.feedbacks.push({user: currentClient.name, comment: c.trim()}); 
-            saveApks(); 
-            renderClient(); 
-            showToast("Comment added!", "success"); 
-        } 
-        if(document.getElementById(`feedback_${id}`)) document.getElementById(`feedback_${id}`).value = ''; 
+    function clientAddFeedback(id) {
+        if(!currentClient) return;
+        const c = document.getElementById(`fb_${id}`)?.value;
+        if(!c?.trim()) { showToast("Write a comment", "error"); return; }
+        const a = apks.find(a => a.id === id);
+        if(a) {
+            a.feedbacks.push({user: currentClient.name, comment: c.trim()});
+            saveLocal();
+            syncAPKsToGitHub();
+            renderClient();
+            showToast("Comment added!", "success");
+        }
     }
 
-    function downloadApk(url, name) { window.open(url, '_blank'); showToast(`Downloading ${name}...`, "success"); }
-
-    function renderClient() { 
-        if(!currentClient) return; 
-        let f = apks.filter(a => a.type === 'featured' && a.name.toLowerCase().includes(searchTermClient.toLowerCase())); 
-        let r = apks.filter(a => a.type === 'recent' && a.name.toLowerCase().includes(searchTermClient.toLowerCase())); 
-        document.getElementById('clientTotalApps').innerText = apks.length; 
-        document.getElementById('featuredGrid').innerHTML = f.length ? f.map(a => clientCard(a)).join('') : '<div style="text-align:center; padding:2rem;">No featured apps</div>'; 
-        document.getElementById('recentGrid').innerHTML = r.length ? r.map(a => clientCard(a)).join('') : '<div style="text-align:center; padding:2rem;">No recent apps</div>'; 
+    function downloadApk(url, name) {
+        window.open(url, '_blank');
+        showToast(`Downloading ${name}...`, "success");
     }
 
-    function clientCard(a) { 
+    function renderClient() {
+        if(!currentClient) return;
+        const search = document.getElementById('clientSearch')?.value?.toLowerCase() || '';
+        const f = apks.filter(a => a.type==='featured' && a.name.toLowerCase().includes(search));
+        const r = apks.filter(a => a.type==='recent' && a.name.toLowerCase().includes(search));
+        document.getElementById('clientTotalApps').innerText = apks.length;
+        document.getElementById('featuredGrid').innerHTML = f.length ? f.map(a => clientCard(a)).join('') : '<div style="text-align:center;padding:2rem;">No featured apps</div>';
+        document.getElementById('recentGrid').innerHTML = r.length ? r.map(a => clientCard(a)).join('') : '<div style="text-align:center;padding:2rem;">No recent apps</div>';
+    }
+
+    function clientCard(a) {
         return `<div class="client-card">
             <div class="app-icon"><img src="${escapeHtml(a.icon)}" onerror="this.src='https://placehold.co/65'"></div>
             <div class="app-name">${escapeHtml(a.name)}</div>
@@ -915,52 +777,47 @@
             <button class="premium-download" onclick="downloadApk('${escapeHtml(a.downloadUrl)}','${escapeHtml(a.name)}')"><i class="fas fa-download"></i> Download APK</button>
             <div class="feedback-section">
                 <strong>💬 Comments (${a.feedbacks.length})</strong>
-                <div style="max-height:100px; overflow-y:auto;">${a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(f.user)}</span>: ${escapeHtml(f.comment)}</div>`).join('') || '<div style="opacity:0.6;">No comments yet</div>'}</div>
-                <textarea id="feedback_${a.id}" class="search-input" style="margin-top:0.5rem; padding:0.5rem; font-size:0.7rem;" rows="2" placeholder="Share your experience..."></textarea>
-                <button class="btn-primary" style="width:100%; margin-top:0.5rem;" onclick="clientAddFeedback('${a.id}')"><i class="fas fa-paper-plane"></i> Submit Comment</button>
+                ${a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(f.user)}</span>: ${escapeHtml(f.comment)}</div>`).join('') || '<div style="opacity:0.6;">No comments</div>'}
+                <textarea id="fb_${a.id}" class="search-input" style="margin-top:0.5rem;padding:0.5rem;font-size:0.7rem;" rows="2" placeholder="Add comment..."></textarea>
+                <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="clientAddFeedback('${a.id}')"><i class="fas fa-paper-plane"></i> Submit</button>
             </div>
-        </div>`; 
+        </div>`;
     }
 
-    // ============ EVENT LISTENERS ============
-    document.getElementById('adminSearch')?.addEventListener('input', e => { searchTermAdmin = e.target.value; renderAdmin(); });
-    document.getElementById('clientSearch')?.addEventListener('input', e => { searchTermClient = e.target.value; renderClient(); });
-    document.getElementById('addBtn')?.addEventListener('click', addAPK);
-    
     // ============ GLOBAL FUNCTIONS ============
-    window.editAPK = editAPK; 
-    window.deleteAPK = deleteAPK; 
+    window.editAPK = editAPK;
+    window.deleteAPK = deleteAPK;
     window.deleteFeedback = deleteFeedback;
-    window.clientAddFeedback = clientAddFeedback; 
+    window.clientAddFeedback = clientAddFeedback;
     window.downloadApk = downloadApk;
-    window.selectRole = selectRole; 
-    window.adminLogin = adminLogin; 
+    window.selectRole = selectRole;
+    window.adminLogin = adminLogin;
     window.clientLogin = clientLogin;
-    window.logout = logout; 
-    window.toggleBan = toggleBan; 
+    window.logout = logout;
+    window.toggleBan = toggleBan;
     window.deleteUser = deleteUser;
-    window.autoSyncToGitHub = autoSyncToGitHub; 
-    window.downloadUpdatedHTML = downloadUpdatedHTML;
+    window.addAPK = addAPK;
+    window.syncClientsToGitHub = syncClientsToGitHub;
+    window.renderAdmin = renderAdmin;
+    window.renderClient = renderClient;
 
-    // ============ PARTICLE EFFECT ============
-    function createParticles() { 
-        const container = document.getElementById('particleField'); 
-        for(let i = 0; i < 60; i++) { 
-            const p = document.createElement('div'); 
-            p.className = 'particle'; 
-            const size = Math.random() * 3 + 1; 
-            p.style.width = size + 'px'; 
-            p.style.height = size + 'px'; 
-            p.style.left = Math.random() * 100 + '%'; 
-            p.style.animationDuration = Math.random() * 8 + 4 + 's'; 
-            p.style.animationDelay = Math.random() * 5 + 's'; 
-            p.style.opacity = Math.random() * 0.5 + 0.2; 
-            container.appendChild(p); 
-        } 
+    // ============ PARTICLES ============
+    function createParticles() {
+        const container = document.getElementById('particleField');
+        for(let i = 0; i < 60; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            p.style.width = (Math.random()*3+1)+'px';
+            p.style.height = p.style.width;
+            p.style.left = Math.random()*100+'%';
+            p.style.animationDuration = (Math.random()*8+4)+'s';
+            p.style.animationDelay = Math.random()*5+'s';
+            container.appendChild(p);
+        }
     }
-    
-    loadData(); 
-    createParticles();
+
+    // ============ INIT ============
+    loadFromCloud().then(() => { createParticles(); });
 </script>
 </body>
 </html>
