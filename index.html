@@ -22,23 +22,56 @@
         .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E"); pointer-events: none; z-index: -1; }
         .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem 4rem; position: relative; }
 
-        /* Admin Broadcast Banner */
+        /* Professional Broadcast Banner */
         .broadcast-banner {
-            background: linear-gradient(95deg, #f59e0b, #ef4444);
-            padding: 0.8rem 1.5rem;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.9rem;
-            animation: slideDown 0.5s ease;
-            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-bottom: 2px solid #f59e0b;
+            padding: 0.9rem 1.5rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            justify-content: space-between;
+            gap: 1rem;
+            animation: broadcastSlideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
-        .broadcast-banner i { animation: bounce 1s infinite; }
-        @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-        @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .broadcast-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.08), transparent);
+            animation: broadcastShine 3s infinite;
+        }
+        @keyframes broadcastShine { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes broadcastSlideIn { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .broadcast-icon {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: #000;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; flex-shrink: 0;
+            animation: broadcastPulse 2s infinite;
+        }
+        @keyframes broadcastPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.5); } 50% { box-shadow: 0 0 0 12px rgba(245,158,11,0); } }
+        .broadcast-content { flex: 1; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+        .broadcast-label {
+            background: rgba(245,158,11,0.2); color: #fbbf24;
+            padding: 0.25rem 0.7rem; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
+        }
+        .broadcast-text { font-size: 0.9rem; font-weight: 500; color: #e2e8f0; line-height: 1.4; }
+        .broadcast-close {
+            background: rgba(255,255,255,0.1); border: none;
+            color: #94a3b8; width: 32px; height: 32px;
+            border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; flex-shrink: 0; font-size: 0.9rem;
+        }
+        .broadcast-close:hover { background: rgba(239,68,68,0.3); color: #fca5a5; transform: rotate(90deg); }
+        .broadcast-timestamp { font-size: 0.65rem; color: #64748b; white-space: nowrap; }
 
         .role-selector { display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
         .premium-role-btn { position: relative; background: rgba(20, 25, 55, 0.6); backdrop-filter: blur(15px); border: 1.5px solid rgba(139, 92, 246, 0.5); padding: 1.2rem 3rem; border-radius: 3rem; font-size: 1.2rem; font-weight: 700; cursor: pointer; color: #fff; overflow: hidden; transition: all 0.4s; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); letter-spacing: 1px; }
@@ -78,7 +111,6 @@
         .btn-primary:hover { transform: scale(1.03); }
         .btn-danger { background: linear-gradient(95deg, #dc2626, #ef4444); }
         .btn-success { background: linear-gradient(95deg, #059669, #10b981); }
-        .btn-broadcast { background: linear-gradient(95deg, #f59e0b, #ef4444); }
         .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
         .apk-card, .client-card { background: rgba(12, 20, 35, 0.7); backdrop-filter: blur(12px); border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
         .apk-card:hover, .client-card:hover { transform: translateY(-5px); border-color: #a78bfa; }
@@ -89,7 +121,9 @@
         .app-category { display: inline-block; font-size: 0.6rem; background: rgba(124, 58, 237, 0.2); padding: 0.2rem 0.6rem; border-radius: 1rem; margin-top: 0.5rem; }
         .premium-download { background: linear-gradient(95deg, #7c3aed, #c084fc); width: 100%; padding: 0.6rem; border-radius: 2rem; border: none; color: white; font-weight: 600; cursor: pointer; margin-top: 0.8rem; font-family: 'Inter', sans-serif; }
         .feedback-section { margin-top: 0.8rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .feedback-item { font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 0.4rem; border-radius: 0.5rem; margin-bottom: 0.3rem; display: flex; justify-content: space-between; align-items: center; }
+        .feedback-item { font-size: 0.75rem; background: rgba(0,0,0,0.3); padding: 0.5rem 0.6rem; border-radius: 0.5rem; margin-bottom: 0.3rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+        .feedback-user { color: #fbbf24; font-weight: 600; white-space: nowrap; font-size: 0.7rem; }
+        .feedback-comment { color: #e2e8f0; flex: 1; font-size: 0.75rem; }
         .stats-row { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
         .stat-item { background: rgba(15, 22, 40, 0.6); padding: 0.5rem 1.2rem; border-radius: 2rem; font-size: 0.8rem; }
         .stat-item i { margin-right: 6px; color: #c084fc; }
@@ -104,9 +138,7 @@
         .ban-btn { background: rgba(220,38,38,0.8); border: none; padding: 6px 14px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-right: 5px; transition: 0.2s; }
         .ban-btn:hover { background: #dc2626; }
         .unban-btn { background: rgba(34,197,94,0.8); }
-        .unban-btn:hover { background: #22c55e; }
-        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 6px 14px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; transition: 0.2s; }
-        .delete-user-btn:hover { background: #ef4444; }
+        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 6px 14px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; }
         .avatar-upload { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
         .avatar-preview { width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; border: 2px dashed rgba(139, 92, 246, 0.5); transition: 0.3s; }
         .avatar-preview:hover { border-color: #c084fc; }
@@ -184,15 +216,27 @@
             <div class="tagline">Admin Panel - Full Control</div>
         </div>
 
-        <!-- BROADCAST MESSAGE -->
-        <div class="glass-card" style="border:1px solid #f59e0b;">
-            <h2><i class="fas fa-bullhorn"></i> Broadcast Message to All Clients</h2>
-            <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-                <input type="text" id="broadcastMessage" class="premium-input" placeholder="Type message for all clients..." style="flex:1;min-width:200px;">
-                <button class="btn-primary btn-broadcast" onclick="sendBroadcast()"><i class="fas fa-paper-plane"></i> Send Broadcast</button>
-                <button class="btn-primary btn-danger" onclick="clearBroadcast()" style="padding:0.7rem 1rem;"><i class="fas fa-trash"></i> Clear</button>
+        <!-- BROADCAST CARD -->
+        <div class="glass-card" style="border: 1px solid rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05);">
+            <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+                <div style="background: linear-gradient(135deg, #f59e0b, #ef4444); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    📢
+                </div>
+                <div>
+                    <h2 style="margin: 0; font-size: 1.2rem; color: #fbbf24;">Broadcast Message</h2>
+                    <p style="font-size: 0.7rem; opacity: 0.7; margin: 0;">Send important announcements to all clients</p>
+                </div>
             </div>
-            <div id="currentBroadcast" style="margin-top:0.8rem;font-size:0.8rem;opacity:0.7;"></div>
+            <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+                <input type="text" id="broadcastMessage" class="premium-input" placeholder="Type your announcement for all clients..." style="flex: 1; min-width: 200px;">
+                <button class="btn-primary" onclick="sendBroadcast()" style="background: linear-gradient(95deg, #f59e0b, #ef4444); white-space: nowrap;">
+                    <i class="fas fa-paper-plane"></i> Send Broadcast
+                </button>
+                <button class="btn-primary" onclick="clearBroadcast()" style="background: rgba(100,100,100,0.5); white-space: nowrap; padding: 0.7rem 1rem;">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+            <div id="broadcastStatus" style="margin-top: 0.8rem; font-size: 0.75rem; display: flex; align-items: center; gap: 0.5rem;"></div>
         </div>
 
         <div class="glass-card">
@@ -222,9 +266,14 @@
 
     <!-- ========== CLIENT DASHBOARD ========== -->
     <div id="clientDashboard" class="hidden">
-        <!-- BROADCAST BANNER -->
         <div id="broadcastBanner" class="broadcast-banner hidden">
-            <i class="fas fa-bullhorn"></i> <span id="broadcastText"></span>
+            <div class="broadcast-icon">📢</div>
+            <div class="broadcast-content">
+                <span class="broadcast-label">Announcement</span>
+                <span class="broadcast-text" id="broadcastText"></span>
+            </div>
+            <span class="broadcast-timestamp" id="broadcastTime"></span>
+            <button class="broadcast-close" onclick="dismissBroadcast()">✕</button>
         </div>
 
         <div class="logout-area">
@@ -268,32 +317,34 @@
     const db = getDatabase(app);
 
     let apks = [], clients = [], currentRole = null, currentClient = null, avatarBase64 = "";
-    let broadcastMsg = "";
+    let broadcastData = { message: "", timestamp: "" };
 
-    // Listen for broadcast messages
+    // Listen for broadcast
     onValue(ref(db, 'broadcast'), (snap) => {
-        broadcastMsg = snap.val() || "";
-        updateBroadcastBanner();
+        broadcastData = snap.val() || { message: "", timestamp: "" };
+        updateBroadcastUI();
     });
 
-    function updateBroadcastBanner() {
-        const banner = document.getElementById('broadcastBanner');
-        const text = document.getElementById('broadcastText');
-        const currentEl = document.getElementById('currentBroadcast');
-        
-        if(currentRole === 'admin' && currentEl) {
-            currentEl.innerHTML = broadcastMsg ? 
-                `<span style="color:#fbbf24;">📢 Current: "${broadcastMsg}"</span>` : 
-                '<span style="opacity:0.5;">No active broadcast</span>';
-            if(document.getElementById('broadcastMessage')) {
-                document.getElementById('broadcastMessage').value = broadcastMsg;
+    function updateBroadcastUI() {
+        // Admin status
+        const statusEl = document.getElementById('broadcastStatus');
+        if(currentRole === 'admin' && statusEl) {
+            if(broadcastData.message) {
+                statusEl.innerHTML = `<span style="color:#fbbf24;">📢 Active: "${broadcastData.message}"</span><span style="font-size:0.65rem;opacity:0.5;">${new Date(broadcastData.timestamp).toLocaleString()}</span>`;
+                document.getElementById('broadcastMessage').value = broadcastData.message;
+            } else {
+                statusEl.innerHTML = '<span style="opacity:0.5;">No active broadcast</span>';
             }
         }
-        
-        if(currentRole === 'client' && banner && text) {
-            if(broadcastMsg) {
+
+        // Client banner
+        const banner = document.getElementById('broadcastBanner');
+        if(currentRole === 'client' && banner) {
+            const dismissed = sessionStorage.getItem('broadcastDismissed');
+            if(broadcastData.message && !dismissed) {
                 banner.classList.remove('hidden');
-                text.textContent = broadcastMsg;
+                document.getElementById('broadcastText').textContent = broadcastData.message;
+                document.getElementById('broadcastTime').textContent = new Date(broadcastData.timestamp).toLocaleString();
             } else {
                 banner.classList.add('hidden');
             }
@@ -326,20 +377,24 @@
 
     function esc(s) { return String(s||'').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); }
 
-    // BROADCAST FUNCTIONS
+    // BROADCAST
     window.sendBroadcast = function() {
         const msg = document.getElementById('broadcastMessage').value.trim();
         if(!msg) { toast("Type a message first","err"); return; }
-        set(ref(db, 'broadcast'), msg).then(() => {
-            toast("Broadcast sent to all clients!","ok");
-        });
+        set(ref(db, 'broadcast'), { message: msg, timestamp: new Date().toISOString() })
+            .then(() => toast("Broadcast sent to all clients!","ok"));
     };
 
     window.clearBroadcast = function() {
-        set(ref(db, 'broadcast'), "").then(() => {
+        set(ref(db, 'broadcast'), { message: "", timestamp: "" }).then(() => {
             document.getElementById('broadcastMessage').value = '';
             toast("Broadcast cleared","ok");
         });
+    };
+
+    window.dismissBroadcast = function() {
+        sessionStorage.setItem('broadcastDismissed', 'true');
+        document.getElementById('broadcastBanner').classList.add('hidden');
     };
 
     window.handleAvatarUpload = function(e) {
@@ -384,7 +439,7 @@
             currentRole = 'admin';
             document.getElementById('adminLoginPanel').classList.add('hidden');
             document.getElementById('adminDashboard').classList.remove('hidden');
-            updateBroadcastBanner();
+            updateBroadcastUI();
             toast("Welcome Admin!","ok");
         } else document.getElementById('adminLoginError').textContent = "Wrong password";
     };
@@ -424,7 +479,8 @@
         document.getElementById('clientDashboard').classList.remove('hidden');
         document.getElementById('clientUserNameDisplay').textContent = currentClient.name;
         document.getElementById('clientCountryDisplay').textContent = currentClient.country;
-        updateBroadcastBanner();
+        sessionStorage.removeItem('broadcastDismissed');
+        updateBroadcastUI();
 
         const ai = document.getElementById('clientAvatarDisplay');
         const af = document.getElementById('clientAvatarFallback');
@@ -438,7 +494,7 @@
         ['adminDashboard','clientDashboard','adminLoginPanel','clientLoginPanel'].forEach(id => document.getElementById(id).classList.add('hidden'));
         document.getElementById('roleSelector').classList.remove('hidden');
         document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-camera"></i>';
-        document.getElementById('broadcastBanner').classList.add('hidden');
+        document.getElementById('broadcastBanner')?.classList.add('hidden');
     };
 
     window.addAPK = function() {
@@ -493,7 +549,6 @@
         if(c && confirm(`Delete ${c.name}?`)) { remove(ref(db, `clients/${fk}`)); toast("Deleted","ok"); }
     };
 
-    // CLIENT FEEDBACK
     window.clientAddFeedback = function(fk) {
         if(!currentClient || !currentClient.name) { toast("Please login again","err"); return; }
         const input = document.getElementById(`fb_${fk}`);
@@ -552,7 +607,7 @@
                 </div>
                 <div class="feedback-section">
                     <strong>💬 Comments (${a.feedbacks.length})</strong>
-                    ${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span><span style="color:#c084fc;">${esc(fb.user)}</span>: ${esc(fb.comment)}</span><span onclick="deleteFeedback('${a.firebaseKey}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;">No comments</div>'}
+                    ${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span class="feedback-user">${esc(fb.user)}</span><span class="feedback-comment">${esc(fb.comment)}</span><span onclick="deleteFeedback('${a.firebaseKey}',${i})" style="color:#ef4444;cursor:pointer;flex-shrink:0;">✖</span></div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;padding:0.3rem;">No comments yet</div>'}
                 </div>
             </div>
         `).join('') : '<div style="text-align:center;padding:2rem;opacity:0.5;">No APKs found</div>';
@@ -579,7 +634,7 @@
             <div class="feedback-section">
                 <strong>💬 Comments (${a.feedbacks.length})</strong>
                 <div style="max-height:120px;overflow-y:auto;margin-bottom:0.5rem;">
-                    ${a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${esc(f.user)}</span>: ${esc(f.comment)}</div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;">No comments yet</div>'}
+                    ${a.feedbacks.map(f => `<div class="feedback-item"><span class="feedback-user">${esc(f.user)}</span><span class="feedback-comment">${esc(f.comment)}</span></div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;">No comments yet</div>'}
                 </div>
                 <textarea id="fb_${fk}" class="search-input" style="margin-top:0.5rem;padding:0.6rem;font-size:0.75rem;" rows="2" placeholder="Write a comment..."></textarea>
                 <button class="btn-primary" style="width:100%;margin-top:0.5rem;padding:0.6rem;" onclick="window.clientAddFeedback('${fk}')"><i class="fas fa-paper-plane"></i> Post Comment</button>
