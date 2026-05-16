@@ -28,7 +28,7 @@
         .admin-btn { background: linear-gradient(135deg, rgba(30, 25, 60, 0.7), rgba(45, 30, 80, 0.7)); border-color: rgba(139, 92, 246, 0.7); }
         .client-btn { background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(10, 50, 70, 0.7)); border-color: rgba(6, 182, 212, 0.7); }
         .premium-login-card { max-width: 500px; margin: 2rem auto; background: rgba(15, 20, 40, 0.85); backdrop-filter: blur(25px); border-radius: 2.5rem; padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5); }
-        .premium-login-card h2 { background: linear-gradient(135deg, #ffffff, #c084fc, #a78bfa); background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 1.8rem; font-size: 1.8rem; }
+        .premium-login-card h2 { background: linear-gradient(135deg, #ffffff, #c084fc, #a78bfa); background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 1.8rem; font-size: 1.8rem; text-align: center; }
         .premium-input { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1.2rem; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 1.5rem; color: white; font-size: 1rem; }
         .premium-input:focus { outline: none; border-color: #c084fc; }
         .premium-select { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1.2rem; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 1.5rem; color: white; font-size: 1rem; cursor: pointer; }
@@ -36,7 +36,7 @@
         .premium-login-btn { background: linear-gradient(135deg, #7c3aed, #c084fc, #a78bfa); background-size: 200% 200%; animation: btnShine 3s ease infinite; width: 100%; padding: 1rem; border: none; border-radius: 2rem; color: white; font-weight: 700; font-size: 1rem; cursor: pointer; }
         @keyframes btnShine { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .premium-login-btn:hover { transform: scale(1.02); box-shadow: 0 5px 25px rgba(124, 58, 237, 0.5); }
-        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 0.5rem; }
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 0.5rem; text-align: center; }
         .logout-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
         .logout-btn { background: rgba(239,68,68,0.8); padding: 0.5rem 1.2rem; border-radius: 2rem; border: none; color: white; cursor: pointer; }
         .header { text-align: center; margin-bottom: 2rem; padding: 2rem 1rem; background: rgba(10, 15, 30, 0.5); backdrop-filter: blur(20px); border-radius: 2rem; }
@@ -55,9 +55,10 @@
         .input-group { flex: 1 1 200px; }
         .input-group label { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: #a78bfa; }
         .input-group input, .input-group textarea, .input-group select { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 0.7rem 1rem; color: white; font-family: 'Inter', sans-serif; }
-        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; }
+        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: 0.3s; }
         .btn-primary:hover { transform: scale(1.03); }
         .btn-danger { background: linear-gradient(95deg, #dc2626, #ef4444); }
+        .btn-success { background: linear-gradient(95deg, #059669, #10b981); }
         .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
         .apk-card, .client-card { background: rgba(12, 20, 35, 0.7); backdrop-filter: blur(12px); border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
         .apk-card:hover, .client-card:hover { transform: translateY(-5px); border-color: #a78bfa; }
@@ -68,19 +69,30 @@
         .app-category { display: inline-block; font-size: 0.6rem; background: rgba(124, 58, 237, 0.2); padding: 0.2rem 0.6rem; border-radius: 1rem; margin-top: 0.5rem; }
         .premium-download { background: linear-gradient(95deg, #7c3aed, #c084fc); width: 100%; padding: 0.6rem; border-radius: 2rem; border: none; color: white; font-weight: 600; cursor: pointer; margin-top: 0.8rem; font-family: 'Inter', sans-serif; }
         .feedback-section { margin-top: 0.8rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .feedback-item { font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 0.3rem; border-radius: 0.5rem; margin-bottom: 0.3rem; }
+        .feedback-item { font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 0.4rem; border-radius: 0.5rem; margin-bottom: 0.3rem; display: flex; justify-content: space-between; align-items: center; }
         .stats-row { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
         .stat-item { background: rgba(15, 22, 40, 0.6); padding: 0.5rem 1.2rem; border-radius: 2rem; font-size: 0.8rem; }
         .stat-item i { margin-right: 6px; color: #c084fc; }
-        .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 1.5rem 0 1rem; }
+        .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 1.5rem 0 1rem; flex-wrap: wrap; }
         .section-title { font-size: 1.3rem; font-weight: 700; }
         .toast { position: fixed; bottom: 25px; right: 25px; background: #1e293b; backdrop-filter: blur(12px); padding: 0.8rem 1.5rem; border-radius: 2rem; border-left: 3px solid #c084fc; z-index: 2000; animation: slideToast 0.3s ease; }
         @keyframes slideToast { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
         .hidden { display: none; }
         .country-badge { background: #3b82f6; border-radius: 20px; padding: 2px 8px; font-size: 0.7rem; margin-left: 8px; }
-        .banned-badge { background: rgba(220,38,38,0.3); border-color: #ef4444; color: #fca5a5; }
-        .ban-btn { background: rgba(220,38,38,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 8px; }
-        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 5px; }
+        .banned-badge { background: rgba(220,38,38,0.3); border-color: #ef4444; color: #fca5a5; padding: 2px 8px; border-radius: 20px; font-size: 0.65rem; }
+        .active-badge { background: rgba(34,197,94,0.2); border: 1px solid #22c55e; color: #86efac; padding: 2px 8px; border-radius: 20px; font-size: 0.65rem; }
+        .ban-btn { background: rgba(220,38,38,0.8); border: none; padding: 6px 14px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-right: 5px; transition: 0.2s; }
+        .ban-btn:hover { background: #dc2626; }
+        .unban-btn { background: rgba(34,197,94,0.8); }
+        .unban-btn:hover { background: #22c55e; }
+        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 6px 14px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; transition: 0.2s; }
+        .delete-user-btn:hover { background: #ef4444; }
+        .avatar-upload { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .avatar-preview { width: 70px; height: 70px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; border: 2px dashed rgba(139, 92, 246, 0.5); transition: 0.3s; }
+        .avatar-preview:hover { border-color: #c084fc; }
+        .avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .avatar-preview i { font-size: 2rem; color: #a78bfa; }
+        .client-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; margin-right: 8px; }
         .live-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; margin-right: 5px; }
         @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
         footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.6; }
@@ -103,6 +115,7 @@
         <button class="premium-role-btn client-btn" onclick="selectRole('client')"><i class="fas fa-gem"></i> CLIENT PORTAL</button>
     </div>
 
+    <!-- ADMIN LOGIN -->
     <div id="adminLoginPanel" class="premium-login-card hidden">
         <h2><i class="fas fa-shield-haltered"></i> Admin Authentication</h2>
         <input type="password" id="adminPassword" class="premium-input" placeholder="Enter Master Password">
@@ -111,8 +124,23 @@
         <p style="margin-top:1rem; font-size:0.7rem; text-align:center; opacity:0.7;">🔐 Password: <strong style="color:#c084fc;">REX0303</strong></p>
     </div>
 
+    <!-- CLIENT LOGIN -->
     <div id="clientLoginPanel" class="premium-login-card hidden">
         <h2><i class="fas fa-user-astronaut"></i> Client Access</h2>
+        
+        <!-- AVATAR UPLOAD -->
+        <div class="avatar-upload">
+            <div class="avatar-preview" onclick="document.getElementById('avatarInput').click()" id="avatarPreview">
+                <i class="fas fa-camera"></i>
+            </div>
+            <div>
+                <p style="font-size:0.8rem; color:#a78bfa;">Profile Picture</p>
+                <p style="font-size:0.6rem; opacity:0.5;">Click to upload (optional)</p>
+            </div>
+            <input type="file" id="avatarInput" accept="image/*" style="display:none;" onchange="handleAvatarUpload(event)">
+        </div>
+        <input type="hidden" id="clientAvatar" value="">
+
         <input type="text" id="clientName" class="premium-input" placeholder="Full Name *">
         <select id="clientCountry" class="premium-select">
             <option value="United States">🇺🇸 United States</option>
@@ -135,6 +163,7 @@
         <div id="clientLoginError" class="error-msg"></div>
     </div>
 
+    <!-- ADMIN DASHBOARD -->
     <div id="adminDashboard" class="hidden">
         <div class="logout-area">
             <div><i class="fas fa-shield-alt"></i> Admin Mode | <span class="live-dot"></span>Live Sync</div>
@@ -157,7 +186,6 @@
                 <div class="input-group"><label>Type</label><select id="appType" style="background:rgba(0,0,0,0.5); border-radius:1rem; padding:0.7rem; color:white;"><option value="featured">Featured</option><option value="recent">Recent</option></select></div>
                 <div class="input-group"><button class="btn-primary" onclick="addAPK()"><i class="fas fa-cloud-upload-alt"></i> Publish APK</button></div>
             </div>
-            <p id="adminPublishStatus" style="font-size:0.7rem; margin-top:0.8rem; text-align:center;"></p>
         </div>
 
         <div class="glass-card">
@@ -171,9 +199,10 @@
         <footer><i class="fas fa-shield-alt"></i> APK Rex Premium - Live Sync</footer>
     </div>
 
+    <!-- CLIENT DASHBOARD -->
     <div id="clientDashboard" class="hidden">
         <div class="logout-area">
-            <span><i class="fas fa-user-circle"></i> <span id="clientUserNameDisplay"></span> <span id="clientCountryDisplay" class="country-badge"></span></span>
+            <span style="display:flex;align-items:center;"><img id="clientAvatarDisplay" class="client-avatar" src="" style="display:none;" onerror="this.style.display='none'"><i class="fas fa-user-circle" id="clientAvatarFallback"></i> <span id="clientUserNameDisplay"></span> <span id="clientCountryDisplay" class="country-badge"></span></span>
             <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
         <div class="header">
@@ -195,79 +224,66 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
     import { getDatabase, ref, set, push, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-    // ==========================================
-    // YOUR FIREBASE CONFIG - REPLACE THIS
-    // ==========================================
+    // FIREBASE CONFIG - REPLACE WITH YOURS
     const firebaseConfig = {
-  apiKey: "AIzaSyAujpgjYaiVOO-obNlYjIUsown5EP-bKAM",
-  authDomain: "apk-37e8f.firebaseapp.com",
-  databaseURL: "https://apk-37e8f-default-rtdb.firebaseio.com",
-  projectId: "apk-37e8f",
-  storageBucket: "apk-37e8f.firebasestorage.app",
-  messagingSenderId: "692595649429",
-  appId: "1:692595649429:web:0a5752bc70f9e54c24649c"
-};
+        apiKey: "AIzaSyCqlMlZoqWkQh0avMGCRoCH3RwPoCrgISc",
+        authDomain: "apk-rex-hub.firebaseapp.com",
+        databaseURL: "https://apk-rex-hub-default-rtdb.firebaseio.com",
+        projectId: "apk-rex-hub",
+        storageBucket: "apk-rex-hub.firebasestorage.app",
+        messagingSenderId: "343552441428",
+        appId: "1:343552441428:web:2e29d7c2b2c8f57b0e5fc1"
+    };
 
     const app = initializeApp(firebaseConfig);
     const database = getDatabase(app);
 
     let apks = [], clients = [], currentRole = null, currentClient = null;
-    let dbConnected = false;
+    let avatarBase64 = "";
 
-    // Test database connection
-    const testRef = ref(database, '.info/connected');
-    onValue(testRef, (snap) => {
-        dbConnected = snap.val() === true;
-        const statusEl = document.getElementById('adminPublishStatus');
-        if(statusEl && currentRole === 'admin') {
-            statusEl.innerHTML = dbConnected ? 
-                '<span style="color:#10b981;">🟢 Database connected - Ready to publish</span>' : 
-                '<span style="color:#ef4444;">🔴 Database disconnected - Check Firebase</span>';
-        }
-    });
-
-    // Listen for APK changes
-    const apksRef = ref(database, 'apks');
-    onValue(apksRef, (snapshot) => {
+    // Database listeners
+    onValue(ref(database, 'apks'), (snapshot) => {
         const data = snapshot.val();
         apks = [];
-        if(data) {
-            Object.keys(data).forEach(key => {
-                apks.push({...data[key], firebaseKey: key});
-            });
-        }
+        if(data) Object.keys(data).forEach(key => apks.push({...data[key], firebaseKey: key}));
         apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; });
         if(currentRole === 'admin') renderAdmin();
         if(currentRole === 'client') renderClient();
-        console.log('APKs loaded:', apks.length);
     });
 
-    // Listen for Client changes
-    const clientsRef = ref(database, 'clients');
-    onValue(clientsRef, (snapshot) => {
+    onValue(ref(database, 'clients'), (snapshot) => {
         const data = snapshot.val();
         clients = [];
-        if(data) {
-            Object.keys(data).forEach(key => {
-                clients.push({...data[key], firebaseKey: key});
-            });
-        }
+        if(data) Object.keys(data).forEach(key => clients.push({...data[key], firebaseKey: key}));
         if(currentRole === 'admin') renderClientList();
-        console.log('Clients loaded:', clients.length);
     });
 
     function showToast(msg, type) {
-        const t = document.createElement('div');
-        t.className = 'toast';
+        const t = document.createElement('div'); t.className = 'toast';
         t.innerHTML = (type==='success'?'✅ ':(type==='error'?'❌ ':'ℹ️ ')) + msg;
-        document.body.appendChild(t);
-        setTimeout(() => t.remove(), 3500);
+        document.body.appendChild(t); setTimeout(() => t.remove(), 3500);
     }
 
     function escapeHtml(str) {
         return String(str || '').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]);
     }
 
+    // AVATAR UPLOAD
+    window.handleAvatarUpload = function(event) {
+        const file = event.target.files[0];
+        if(!file) return;
+        if(file.size > 2000000) { showToast("Image too large! Max 2MB", "error"); return; }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            avatarBase64 = e.target.result;
+            const preview = document.getElementById('avatarPreview');
+            preview.innerHTML = `<img src="${avatarBase64}" alt="Avatar">`;
+            document.getElementById('clientAvatar').value = avatarBase64;
+        };
+        reader.readAsDataURL(file);
+    };
+
+    // ROLE SELECTION
     window.selectRole = function(role) {
         document.getElementById('roleSelector').classList.add('hidden');
         if(role === 'admin') {
@@ -289,6 +305,10 @@
         const existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
         if(existing && !existing.isBanned) {
             document.getElementById('clientName').value = existing.name;
+            if(existing.avatar) {
+                avatarBase64 = existing.avatar;
+                document.getElementById('avatarPreview').innerHTML = `<img src="${existing.avatar}" alt="Avatar">`;
+            }
             const opt = Array.from(document.getElementById('clientCountry').options).find(o => o.value === existing.country);
             if(opt) document.getElementById('clientCountry').value = existing.country;
             performClientLogin(true);
@@ -300,8 +320,6 @@
             currentRole = 'admin';
             document.getElementById('adminLoginPanel').classList.add('hidden');
             document.getElementById('adminDashboard').classList.remove('hidden');
-            renderAdmin();
-            renderClientList();
             showToast("Welcome Admin!", "success");
         } else {
             document.getElementById('adminLoginError').innerText = "Incorrect password";
@@ -320,7 +338,7 @@
 
         let existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
         if(existing && existing.isBanned) {
-            document.getElementById('clientLoginError').innerHTML = '🚫 Account Banned!';
+            document.getElementById('clientLoginError').innerHTML = '🚫 Account Banned! Contact admin.';
             return;
         }
 
@@ -329,21 +347,18 @@
             updates[`${existing.firebaseKey}/lastLogin`] = new Date().toISOString();
             updates[`${existing.firebaseKey}/name`] = name;
             updates[`${existing.firebaseKey}/country`] = country;
+            if(avatarBase64) updates[`${existing.firebaseKey}/avatar`] = avatarBase64;
             update(ref(database, 'clients'), updates);
-            currentClient = {...existing, name, country};
+            currentClient = {...existing, name, country, avatar: avatarBase64 || existing.avatar};
         } else {
-            const newRef = push(clientsRef);
+            const newRef = push(ref(database, 'clients'));
             const newClient = {
                 name, country, email, isBanned: false,
+                avatar: avatarBase64,
                 registrationDate: new Date().toISOString(),
                 lastLogin: new Date().toISOString()
             };
-            set(newRef, newClient).then(() => {
-                console.log('Client saved to database');
-            }).catch(err => {
-                console.error('Client save error:', err);
-                showToast("Registration error: " + err.message, "error");
-            });
+            set(newRef, newClient);
             currentClient = {...newClient, firebaseKey: newRef.key};
             showToast(`Welcome ${escapeHtml(name)}!`, "success");
         }
@@ -354,27 +369,39 @@
         document.getElementById('clientDashboard').classList.remove('hidden');
         document.getElementById('clientUserNameDisplay').innerHTML = escapeHtml(currentClient.name);
         document.getElementById('clientCountryDisplay').innerHTML = currentClient.country;
+        
+        // Show avatar
+        const avatarImg = document.getElementById('clientAvatarDisplay');
+        const avatarFallback = document.getElementById('clientAvatarFallback');
+        if(currentClient.avatar) {
+            avatarImg.src = currentClient.avatar;
+            avatarImg.style.display = 'inline-block';
+            avatarFallback.style.display = 'none';
+        } else {
+            avatarImg.style.display = 'none';
+            avatarFallback.style.display = 'inline-block';
+        }
         renderClient();
     }
 
     window.logout = function() {
-        currentRole = null; currentClient = null;
+        currentRole = null; currentClient = null; avatarBase64 = "";
         ['adminDashboard','clientDashboard','adminLoginPanel','clientLoginPanel'].forEach(id => {
             document.getElementById(id).classList.add('hidden');
         });
         document.getElementById('roleSelector').classList.remove('hidden');
+        document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-camera"></i>';
     };
 
+    // ADD APK
     window.addAPK = function() {
         const n = document.getElementById('appName').value.trim();
         const i = document.getElementById('logoUrl').value.trim();
         const l = document.getElementById('downloadLink').value.trim();
-        
         if(!n || !i || !l) { showToast("Name, Icon URL & APK Link required", "error"); return; }
-        if(!dbConnected) { showToast("Database not connected! Check Firebase", "error"); return; }
 
-        const newRef = push(apksRef);
-        const apkData = {
+        const newRef = push(ref(database, 'apks'));
+        set(newRef, {
             name: n,
             version: document.getElementById('appVersion').value.trim() || "1.0",
             date: new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }),
@@ -384,20 +411,12 @@
             description: document.getElementById('appDesc').value.trim() || "",
             downloadUrl: l,
             feedbacks: []
-        };
-
-        set(newRef, apkData)
-            .then(() => {
-                console.log('APK saved successfully!');
-                ['appName','appVersion','logoUrl','appCategory','appDesc','downloadLink'].forEach(id => {
-                    document.getElementById(id).value = '';
-                });
-                showToast("✅ APK Published! Instantly visible on all devices!", "success");
-            })
-            .catch(err => {
-                console.error('APK save error:', err);
-                showToast("❌ Error: " + err.message, "error");
+        }).then(() => {
+            ['appName','appVersion','logoUrl','appCategory','appDesc','downloadLink'].forEach(id => {
+                document.getElementById(id).value = '';
             });
+            showToast("APK Published! Visible on all devices!", "success");
+        }).catch(err => showToast("Error: " + err.message, "error"));
     };
 
     window.deleteAPK = function(firebaseKey) {
@@ -427,17 +446,24 @@
         }
     };
 
+    // BAN/UNBAN USER - FIXED
     window.toggleBan = function(firebaseKey) {
         const c = clients.find(c => c.firebaseKey === firebaseKey);
         if(c) {
-            update(ref(database, `clients/${firebaseKey}/isBanned`), !c.isBanned);
+            const newStatus = !c.isBanned;
+            update(ref(database, `clients/${firebaseKey}`), { isBanned: newStatus })
+                .then(() => showToast(`${c.name} ${newStatus ? 'BANNED' : 'Unbanned'}`, "info"))
+                .catch(err => showToast("Error: " + err.message, "error"));
         }
     };
 
+    // DELETE USER - FIXED
     window.deleteUser = function(firebaseKey) {
         const c = clients.find(c => c.firebaseKey === firebaseKey);
-        if(c && confirm(`Delete ${c.name}?`)) {
-            remove(ref(database, `clients/${firebaseKey}`));
+        if(c && confirm(`Permanently delete ${c.name}?\n\nThis cannot be undone!`)) {
+            remove(ref(database, `clients/${firebaseKey}`))
+                .then(() => showToast(`${c.name} deleted`, "info"))
+                .catch(err => showToast("Error: " + err.message, "error"));
         }
     };
 
@@ -446,18 +472,28 @@
         document.getElementById('totalClients').innerText = clients.length;
         if(!container) return;
         if(clients.length === 0) {
-            container.innerHTML = '<div style="padding:2rem;text-align:center;opacity:0.5;">Waiting for clients to register...</div>';
+            container.innerHTML = '<div style="padding:2rem;text-align:center;opacity:0.5;"><i class="fas fa-user-plus" style="font-size:2rem;display:block;margin-bottom:0.5rem;"></i>No clients registered yet</div>';
             return;
         }
         container.innerHTML = clients.map(c => `
-            <div style="background:rgba(255,255,255,0.05);border-radius:1rem;padding:1rem;margin-bottom:0.5rem;border-left:3px solid ${c.isBanned?'#ef4444':'#10b981'}">
-                <strong>${escapeHtml(c.name)}</strong> <span class="country-badge">${escapeHtml(c.country)}</span>
-                <div style="font-size:0.75rem;">📧 ${escapeHtml(c.email)}</div>
-                <div style="font-size:0.65rem;opacity:0.6;">Registered: ${new Date(c.registrationDate).toLocaleDateString()}</div>
-                ${c.isBanned ? '<span class="badge banned-badge">BANNED</span>' : '<span class="badge" style="background:rgba(34,197,94,0.2);">Active</span>'}
-                <div style="margin-top:8px;">
-                    <button class="ban-btn" onclick="toggleBan('${c.firebaseKey}')">${c.isBanned?'Unban':'Ban'}</button>
-                    <button class="delete-user-btn" onclick="deleteUser('${c.firebaseKey}')">Delete</button>
+            <div style="background:rgba(255,255,255,0.05);border-radius:1rem;padding:1rem;margin-bottom:0.8rem;border-left:4px solid ${c.isBanned?'#ef4444':'#10b981'}">
+                <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.5rem;">
+                    ${c.avatar ? `<img src="${c.avatar}" style="width:45px;height:45px;border-radius:50%;object-fit:cover;">` : '<i class="fas fa-user-circle" style="font-size:2.5rem;color:#a78bfa;"></i>'}
+                    <div>
+                        <strong style="font-size:1rem;">${escapeHtml(c.name)}</strong>
+                        <span class="country-badge">${escapeHtml(c.country)}</span>
+                    </div>
+                </div>
+                <div style="font-size:0.75rem;margin-bottom:0.3rem;">📧 ${escapeHtml(c.email)}</div>
+                <div style="font-size:0.65rem;opacity:0.6;margin-bottom:0.5rem;">
+                    📅 ${new Date(c.registrationDate).toLocaleDateString()} | 🕐 ${new Date(c.lastLogin).toLocaleString()}
+                </div>
+                ${c.isBanned ? '<span class="banned-badge">🚫 BANNED</span>' : '<span class="active-badge">✅ Active</span>'}
+                <div style="margin-top:10px;display:flex;gap:0.5rem;">
+                    <button class="${c.isBanned ? 'ban-btn unban-btn' : 'ban-btn'}" onclick="toggleBan('${c.firebaseKey}')">
+                        ${c.isBanned ? '✅ Unban' : '🔨 Ban'}
+                    </button>
+                    <button class="delete-user-btn" onclick="deleteUser('${c.firebaseKey}')">🗑️ Delete</button>
                 </div>
             </div>
         `).join('');
@@ -473,29 +509,34 @@
                 <div class="app-name">${escapeHtml(a.name)}</div>
                 <div class="app-version">v${escapeHtml(a.version)}</div>
                 <span class="app-category">${escapeHtml(a.category)}</span>
-                <div style="margin-top:0.8rem;">
-                    <button class="btn-primary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.firebaseKey}')">✏️</button>
-                    <button class="btn-primary btn-danger" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.firebaseKey}')">🗑️</button>
+                <div style="margin-top:0.8rem;display:flex;gap:0.5rem;">
+                    <button class="btn-primary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.firebaseKey}')">✏️ Edit</button>
+                    <button class="btn-primary btn-danger" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.firebaseKey}')">🗑️ Delete</button>
                 </div>
                 <div class="feedback-section">
-                    <strong>💬 (${a.feedbacks.length})</strong>
-                    ${a.feedbacks.map((fb,i)=>`<div class="feedback-item">${escapeHtml(fb.user)}: ${escapeHtml(fb.comment)} <span onclick="deleteFeedback('${a.firebaseKey}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('')}
+                    <strong>💬 Comments (${a.feedbacks.length})</strong>
+                    ${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span><span style="color:#c084fc;">${escapeHtml(fb.user)}</span>: ${escapeHtml(fb.comment)}</span><span onclick="deleteFeedback('${a.firebaseKey}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;">No comments</div>'}
                 </div>
             </div>
         `).join('');
     }
 
+    // CLIENT FEEDBACK - FIXED
     window.clientAddFeedback = function(firebaseKey) {
-        if(!currentClient) return;
+        if(!currentClient) { showToast("You must be logged in", "error"); return; }
         const input = document.getElementById(`fb_${firebaseKey}`);
         const comment = input?.value?.trim();
-        if(!comment) { showToast("Write a comment", "error"); return; }
+        if(!comment) { showToast("Write a comment first", "error"); return; }
         const a = apks.find(a => a.firebaseKey === firebaseKey);
         if(a) {
             if(!a.feedbacks) a.feedbacks = [];
-            a.feedbacks.push({user: currentClient.name, comment});
-            update(ref(database, `apks/${firebaseKey}/feedbacks`), a.feedbacks);
-            if(input) input.value = '';
+            a.feedbacks.push({user: currentClient.name, comment: comment});
+            update(ref(database, `apks/${firebaseKey}/feedbacks`), a.feedbacks)
+                .then(() => {
+                    if(input) input.value = '';
+                    showToast("Comment posted!", "success");
+                })
+                .catch(err => showToast("Error: " + err.message, "error"));
         }
     };
 
@@ -522,10 +563,12 @@
             <span class="app-category">${escapeHtml(a.category)}</span>
             <button class="premium-download" onclick="downloadApk('${escapeHtml(a.downloadUrl)}','${escapeHtml(a.name)}')"><i class="fas fa-download"></i> Download APK</button>
             <div class="feedback-section">
-                <strong>💬 (${a.feedbacks.length})</strong>
-                <div style="max-height:100px;overflow-y:auto;">${a.feedbacks.map(f => `<div class="feedback-item">${escapeHtml(f.user)}: ${escapeHtml(f.comment)}</div>`).join('') || '<div style="opacity:0.5;">No comments</div>'}</div>
-                <textarea id="fb_${a.firebaseKey}" class="search-input" style="margin-top:0.5rem;padding:0.5rem;font-size:0.7rem;" rows="2" placeholder="Comment..."></textarea>
-                <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="clientAddFeedback('${a.firebaseKey}')">Submit</button>
+                <strong>💬 Comments (${a.feedbacks.length})</strong>
+                <div style="max-height:120px;overflow-y:auto;margin-bottom:0.5rem;">
+                    ${a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(f.user)}</span>: ${escapeHtml(f.comment)}</div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;">No comments yet</div>'}
+                </div>
+                <textarea id="fb_${a.firebaseKey}" class="search-input" style="margin-top:0.5rem;padding:0.6rem;font-size:0.75rem;" rows="2" placeholder="Write a comment..."></textarea>
+                <button class="btn-primary" style="width:100%;margin-top:0.5rem;padding:0.6rem;" onclick="clientAddFeedback('${a.firebaseKey}')"><i class="fas fa-paper-plane"></i> Post Comment</button>
             </div>
         </div>`;
     }
