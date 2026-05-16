@@ -15,194 +15,38 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-        .premium-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            overflow: hidden;
-        }
-        .gradient-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.35;
-            animation: floatPremium 20s infinite alternate ease-in-out;
-        }
+        .premium-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
+        .gradient-orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.35; animation: floatPremium 20s infinite alternate ease-in-out; }
         .orb-1 { width: 70vw; height: 70vw; background: radial-gradient(circle, #8b5cf6, #3b82f6); top: -30%; left: -20%; animation-duration: 25s; }
         .orb-2 { width: 55vw; height: 55vw; background: radial-gradient(circle, #ec4899, #f97316); bottom: -25%; right: -15%; animation-duration: 30s; animation-delay: -3s; }
         .orb-3 { width: 45vw; height: 45vw; background: radial-gradient(circle, #06b6d4, #8b5cf6); top: 40%; left: 55%; animation-duration: 22s; animation-delay: -7s; }
         .orb-4 { width: 35vw; height: 35vw; background: radial-gradient(circle, #fbbf24, #ef4444); top: 60%; left: -10%; animation-duration: 28s; animation-delay: -5s; }
-        @keyframes floatPremium {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(4%, 6%) scale(1.15); }
-        }
-        .particle-field {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: floatParticle linear infinite;
-        }
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
-        }
-        .noise-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: -1;
-        }
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
-            position: relative;
-        }
-        .role-selector {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        .premium-role-btn {
-            position: relative;
-            background: rgba(20, 25, 55, 0.6);
-            backdrop-filter: blur(15px);
-            border: 1.5px solid rgba(139, 92, 246, 0.5);
-            padding: 1.2rem 3rem;
-            border-radius: 3rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            color: #fff;
-            overflow: hidden;
-            transition: all 0.4s;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
-        }
-        .premium-role-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-            transition: left 0.6s;
-        }
+        @keyframes floatPremium { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(4%, 6%) scale(1.15); } }
+        .particle-field { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .particle { position: absolute; background: rgba(255, 255, 255, 0.4); border-radius: 50%; pointer-events: none; animation: floatParticle linear infinite; }
+        @keyframes floatParticle { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; } }
+        .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E"); pointer-events: none; z-index: -1; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem 4rem; position: relative; }
+        .role-selector { display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+        .premium-role-btn { position: relative; background: rgba(20, 25, 55, 0.6); backdrop-filter: blur(15px); border: 1.5px solid rgba(139, 92, 246, 0.5); padding: 1.2rem 3rem; border-radius: 3rem; font-size: 1.2rem; font-weight: 700; cursor: pointer; color: #fff; overflow: hidden; transition: all 0.4s; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); letter-spacing: 1px; }
+        .premium-role-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent); transition: left 0.6s; }
         .premium-role-btn:hover::before { left: 100%; }
         .premium-role-btn i { margin-right: 12px; font-size: 1.3rem; }
         .admin-btn { background: linear-gradient(135deg, rgba(30, 25, 60, 0.7), rgba(45, 30, 80, 0.7)); border-color: rgba(139, 92, 246, 0.7); }
         .admin-btn:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 15px 35px rgba(139, 92, 246, 0.6); }
         .client-btn { background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(10, 50, 70, 0.7)); border-color: rgba(6, 182, 212, 0.7); }
         .client-btn:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 15px 35px rgba(6, 182, 212, 0.6); }
-        .premium-login-card {
-            max-width: 500px;
-            margin: 2rem auto;
-            background: rgba(15, 20, 40, 0.85);
-            backdrop-filter: blur(25px);
-            border-radius: 2.5rem;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5);
-            animation: cardGlowIn 0.7s ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-        .premium-login-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent);
-            animation: rotateGlow 12s linear infinite;
-        }
+        .premium-login-card { max-width: 500px; margin: 2rem auto; background: rgba(15, 20, 40, 0.85); backdrop-filter: blur(25px); border-radius: 2.5rem; padding: 2.5rem; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5); animation: cardGlowIn 0.7s ease-out; position: relative; overflow: hidden; }
+        .premium-login-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent); animation: rotateGlow 12s linear infinite; }
         @keyframes rotateGlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes cardGlowIn {
-            from { opacity: 0; transform: translateY(40px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        .premium-login-card h2 {
-            background: linear-gradient(135deg, #ffffff, #c084fc, #a78bfa);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 1.8rem;
-            font-size: 1.8rem;
-            position: relative;
-            z-index: 1;
-        }
-        .premium-input {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.2rem;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            border-radius: 1.5rem;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-        }
+        @keyframes cardGlowIn { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .premium-login-card h2 { background: linear-gradient(135deg, #ffffff, #c084fc, #a78bfa); background-clip: text; -webkit-background-clip: text; color: transparent; margin-bottom: 1.8rem; font-size: 1.8rem; position: relative; z-index: 1; }
+        .premium-input { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1.2rem; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 1.5rem; color: white; font-size: 1rem; transition: all 0.3s; position: relative; z-index: 1; }
         .premium-input:focus { outline: none; border-color: #c084fc; box-shadow: 0 0 20px rgba(192, 132, 252, 0.4); }
-        .premium-select {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.2rem;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(139, 92, 246, 0.4);
-            border-radius: 1.5rem;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-        }
+        .premium-select { width: 100%; padding: 1rem 1.2rem; margin-bottom: 1.2rem; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 1.5rem; color: white; font-size: 1rem; cursor: pointer; position: relative; z-index: 1; }
         .premium-select option { background: #1a1a2e; color: white; }
-        .premium-login-btn {
-            background: linear-gradient(135deg, #7c3aed, #c084fc, #a78bfa);
-            background-size: 200% 200%;
-            animation: btnShine 3s ease infinite;
-            width: 100%;
-            padding: 1rem;
-            border: none;
-            border-radius: 2rem;
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-        }
-        @keyframes btnShine {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        .premium-login-btn { background: linear-gradient(135deg, #7c3aed, #c084fc, #a78bfa); background-size: 200% 200%; animation: btnShine 3s ease infinite; width: 100%; padding: 1rem; border: none; border-radius: 2rem; color: white; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; position: relative; z-index: 1; }
+        @keyframes btnShine { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .premium-login-btn:hover { transform: scale(1.02); box-shadow: 0 5px 25px rgba(124, 58, 237, 0.5); }
         .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 0.5rem; position: relative; z-index: 1; }
         .logout-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
@@ -225,7 +69,7 @@
         .input-group { flex: 1 1 200px; }
         .input-group label { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: #a78bfa; }
         .input-group input, .input-group textarea, .input-group select { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 0.7rem 1rem; color: white; font-family: 'Inter', sans-serif; }
-        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; }
+        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; transition: 0.3s; }
         .btn-primary:hover { transform: scale(1.03); }
         .btn-danger { background: linear-gradient(95deg, #dc2626, #ef4444); }
         .btn-success { background: linear-gradient(95deg, #059669, #10b981); }
@@ -243,7 +87,7 @@
         .stats-row { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
         .stat-item { background: rgba(15, 22, 40, 0.6); padding: 0.5rem 1.2rem; border-radius: 2rem; font-size: 0.8rem; }
         .stat-item i { margin-right: 6px; color: #c084fc; }
-        .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 1.5rem 0 1rem; }
+        .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 1.5rem 0 1rem; flex-wrap: wrap; gap: 0.5rem; }
         .section-title { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
         .toast { position: fixed; bottom: 25px; right: 25px; background: #1e293b; backdrop-filter: blur(12px); padding: 0.8rem 1.5rem; border-radius: 2rem; border-left: 3px solid #c084fc; z-index: 2000; animation: slideToast 0.3s ease; }
         @keyframes slideToast { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
@@ -255,10 +99,8 @@
         .unban-btn { background: rgba(34,197,94,0.8); }
         .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 5px; }
         .delete-user-btn:hover { background: #ef4444; }
-        .sync-bar { position: fixed; top: 0; left: 0; right: 0; background: #059669; padding: 0.5rem; text-align: center; font-weight: 600; font-size: 0.8rem; z-index: 3000; display: none; }
-        .sync-bar.show { display: block; animation: slideDown 0.3s ease; }
-        .sync-bar.error { background: #dc2626; }
-        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+        .live-indicator { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; animation: pulse 2s infinite; margin-right: 6px; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
         footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.6; }
         @media (max-width: 700px) { .container { padding: 1rem; } .logo h1 { font-size: 1.8rem; } .premium-role-btn { padding: 0.8rem 1.8rem; font-size: 1rem; } }
     </style>
@@ -272,7 +114,6 @@
 </div>
 <div class="particle-field" id="particleField"></div>
 <div class="noise-overlay"></div>
-<div class="sync-bar" id="syncBar"></div>
 
 <div class="container">
     <div id="roleSelector" class="role-selector">
@@ -315,16 +156,16 @@
     <!-- ADMIN DASHBOARD -->
     <div id="adminDashboard" class="hidden">
         <div class="logout-area">
-            <div><i class="fas fa-shield-alt"></i> Admin Mode | <span style="color:#10b981;">🟢 Live Sync</span></div>
+            <div><i class="fas fa-shield-alt"></i> Admin Mode | <span class="live-indicator"></span> Live Sync Active</div>
             <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
         </div>
         <div class="header">
             <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex Premium App Hub</h1></div>
-            <div class="tagline">Admin Panel - All changes sync to all devices</div>
+            <div class="tagline">Admin Panel - Instant Auto-Sync Enabled</div>
         </div>
 
         <div class="glass-card">
-            <h2><i class="fas fa-plus-circle"></i> Add New App (Syncs to All Devices)</h2>
+            <h2><i class="fas fa-plus-circle"></i> Add New App (Auto-Syncs to All Devices)</h2>
             <div class="form-grid">
                 <div class="input-group"><label>Name *</label><input type="text" id="appName" placeholder="Spotify Premium"></div>
                 <div class="input-group"><label>Version *</label><input type="text" id="appVersion" placeholder="8.9.18"></div>
@@ -333,22 +174,22 @@
                 <div class="input-group"><label>Description</label><textarea id="appDesc" rows="2" placeholder="App description..."></textarea></div>
                 <div class="input-group"><label>APK Link *</label><input type="text" id="downloadLink" placeholder="https://...apk"></div>
                 <div class="input-group"><label>Type</label><select id="appType" style="background:rgba(0,0,0,0.5); border-radius:1rem; padding:0.7rem; color:white;"><option value="featured">Featured</option><option value="recent">Recent</option></select></div>
-                <div class="input-group"><button class="btn-primary" onclick="addAPK()"><i class="fas fa-cloud-upload-alt"></i> Publish & Sync APK</button></div>
+                <div class="input-group"><button class="btn-primary" onclick="addAPK()"><i class="fas fa-cloud-upload-alt"></i> Publish & Auto-Sync APK</button></div>
             </div>
         </div>
 
         <div class="glass-card">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <h2><i class="fas fa-users"></i> Registered Clients</h2>
-                <button class="btn-primary" onclick="syncClientsToGitHub()" style="font-size:0.7rem; padding:0.5rem 1rem;"><i class="fas fa-sync-alt"></i> Sync Clients to Server</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
+                <h2><i class="fas fa-users"></i> Registered Clients (Live)</h2>
+                <span style="font-size:0.8rem; opacity:0.7;">Total: <strong id="totalClients">0</strong></span>
             </div>
-            <div id="adminClientsList" style="max-height: 350px; overflow-y: auto; margin-top: 1rem;"></div>
+            <div id="adminClientsList" style="max-height: 400px; overflow-y: auto; margin-top: 1rem;"></div>
         </div>
 
         <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="adminSearch" class="search-input" placeholder="Search APK..." oninput="renderAdmin()"></div></div>
         <div class="section-header"><div class="section-title"><i class="fas fa-database"></i> All APKs</div><div class="stat-item"><i class="fas fa-mobile-alt"></i> <span id="adminTotalApps">0</span> Apps</div></div>
         <div id="adminAppsContainer" class="apps-grid"></div>
-        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium - Synced to All Devices</footer>
+        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium - Instant Live Sync</footer>
     </div>
 
     <!-- CLIENT DASHBOARD -->
@@ -359,8 +200,8 @@
         </div>
         <div class="header">
             <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex | Premium App Hub</h1></div>
-            <div class="tagline">Always updated with latest apps</div>
-            <div class="badge-premium"><span class="badge"><i class="fas fa-check-circle"></i> Secure</span><span class="badge"><i class="fas fa-bolt"></i> Fast</span></div>
+            <div class="tagline">Always updated - Live sync enabled</div>
+            <div class="badge-premium"><span class="badge"><i class="fas fa-check-circle"></i> Secure</span><span class="badge"><span class="live-indicator"></span> Live</span></div>
         </div>
         <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="clientSearch" class="search-input" placeholder="Find apps..." oninput="renderClient()"></div></div>
         <div class="stats-row"><div class="stat-item"><i class="fas fa-mobile-alt"></i> <span id="clientTotalApps">0</span> Apps</div><div class="stat-item"><i class="fas fa-download"></i> +15K Downloads</div></div>
@@ -372,154 +213,69 @@
     </div>
 </div>
 
-<script>
+<script type="module">
     // ==========================================
-    // CONFIGURATION - FILL THESE 3 LINES
+    // FIREBASE CONFIGURATION
     // ==========================================
-    const GITHUB_USERNAME = "shivareborn";
-    const GITHUB_REPO = "apk-rex-hub";
-    const GITHUB_TOKEN = "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";
-    // ==========================================
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getDatabase, ref, set, onValue, push, update, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-    // Cloud storage keys
-    const CLOUD_APKS = "apk_rex_cloud_apks";
-    const CLOUD_CLIENTS = "apk_rex_cloud_clients";
-    const LOCAL_APKS = "apk_rex_local_apks";
-    const LOCAL_CLIENTS = "apk_rex_local_clients";
+    const firebaseConfig = {
+        apiKey: "AIzaSyCqlMlZoqWkQh0avMGCRoCH3RwPoCrgISc",
+        authDomain: "apk-rex-hub.firebaseapp.com",
+        databaseURL: "https://apk-rex-hub-default-rtdb.firebaseio.com",
+        projectId: "apk-rex-hub",
+        storageBucket: "apk-rex-hub.firebasestorage.app",
+        messagingSenderId: "343552441428",
+        appId: "1:343552441428:web:2e29d7c2b2c8f57b0e5fc1"
+    };
 
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const apksRef = ref(database, 'apks');
+    const clientsRef = ref(database, 'clients');
+
+    // ==========================================
+    // GLOBAL DATA
+    // ==========================================
     let apks = [], clients = [], currentRole = null, currentClient = null;
 
-    const defaultApks = [
-        { id: "1", name: "1win", version: "1.3.22", date: "March 19, 2026", category: "Betting", type: "featured", icon: "https://picsum.photos/id/104/100/100", description: "The best platform", downloadUrl: "https://example.com/1win.apk", feedbacks: [] },
-        { id: "2", name: "Garena Free Fire", version: "2.123.1", date: "April 11, 2026", category: "Games", type: "featured", icon: "https://picsum.photos/id/155/100/100", description: "Battle Royale", downloadUrl: "https://example.com/freefire.apk", feedbacks: [] },
-        { id: "3", name: "Spotify Premium", version: "8.9.18", date: "May 10, 2026", category: "Music", type: "featured", icon: "https://picsum.photos/id/29/100/100", description: "Unlimited music", downloadUrl: "https://example.com/spotify.apk", feedbacks: [] },
-        { id: "4", name: "Poppy Playtime", version: "0.4.3", date: "May 11, 2026", category: "Games", type: "recent", icon: "https://picsum.photos/id/26/100/100", description: "Horror and puzzles", downloadUrl: "https://example.com/poppy.apk", feedbacks: [] }
-    ];
-
-    // ============ LOAD DATA FROM GITHUB (CLOUD) ============
-    async function loadFromCloud() {
-        try {
-            // Load APKs from GitHub
-            const apkUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/main/apks.json`;
-            const apkRes = await fetch(apkUrl + '?t=' + Date.now());
-            if (apkRes.ok) {
-                apks = await apkRes.json();
-                localStorage.setItem(LOCAL_APKS, JSON.stringify(apks));
-            } else {
-                // Fallback to local
-                const local = localStorage.getItem(LOCAL_APKS);
-                apks = local ? JSON.parse(local) : JSON.parse(JSON.stringify(defaultApks));
-            }
-
-            // Load Clients from GitHub
-            const clientUrl = `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${GITHUB_REPO}/main/clients.json`;
-            const clientRes = await fetch(clientUrl + '?t=' + Date.now());
-            if (clientRes.ok) {
-                clients = await clientRes.json();
-                localStorage.setItem(LOCAL_CLIENTS, JSON.stringify(clients));
-            } else {
-                const local = localStorage.getItem(LOCAL_CLIENTS);
-                clients = local ? JSON.parse(local) : [];
-            }
-        } catch(e) {
-            console.log('Offline mode - using local data');
-            const localApks = localStorage.getItem(LOCAL_APKS);
-            apks = localApks ? JSON.parse(localApks) : JSON.parse(JSON.stringify(defaultApks));
-            const localClients = localStorage.getItem(LOCAL_CLIENTS);
-            clients = localClients ? JSON.parse(localClients) : [];
-        }
+    // ==========================================
+    // REAL-TIME LISTENERS
+    // ==========================================
+    onValue(apksRef, (snapshot) => {
+        const data = snapshot.val();
+        apks = data ? Object.values(data) : [];
         apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; });
-    }
+        if(currentRole === 'admin') renderAdmin();
+        if(currentRole === 'client') renderClient();
+    });
 
-    function saveLocal() {
-        localStorage.setItem(LOCAL_APKS, JSON.stringify(apks));
-        localStorage.setItem(LOCAL_CLIENTS, JSON.stringify(clients));
-    }
+    onValue(clientsRef, (snapshot) => {
+        const data = snapshot.val();
+        clients = data ? Object.values(data) : [];
+        if(currentRole === 'admin') renderClientList();
+    });
 
-    // ============ SYNC TO GITHUB ============
-    async function syncToGitHub(data, filename, message) {
-        if (!GITHUB_TOKEN || GITHUB_TOKEN.includes("YOUR_GITHUB_TOKEN")) {
-            showToast("Token not configured. Download HTML instead.", "error");
-            return false;
-        }
-        try {
-            const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-            const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/${filename}`;
-            
-            // Get SHA if file exists
-            let sha = '';
-            try {
-                const getRes = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}` } });
-                if (getRes.ok) { const d = await getRes.json(); sha = d.sha; }
-            } catch(e) {}
-
-            const body = { message: message, content: content, branch: 'main' };
-            if (sha) body.sha = sha;
-
-            const res = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `token ${GITHUB_TOKEN}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            });
-            return res.ok;
-        } catch(e) {
-            console.error('Sync error:', e);
-            return false;
-        }
-    }
-
-    async function syncAPKsToGitHub() {
-        showSyncBar('🔄 Syncing APKs...', '');
-        const ok = await syncToGitHub(apks, 'apks.json', `Update APKs: ${apks.length} apps`);
-        if (ok) {
-            showSyncBar('✅ APKs Synced! Visible on all devices in 1-2 min', '');
-            setTimeout(() => hideSyncBar(), 3000);
-            showToast("APKs synced to all devices!", "success");
-        } else {
-            showSyncBar('❌ Sync failed. Check token or internet.', 'error');
-            showToast("Sync failed! Download HTML instead", "error");
-        }
-    }
-
-    async function syncClientsToGitHub() {
-        showSyncBar('🔄 Syncing Clients...', '');
-        const ok = await syncToGitHub(clients, 'clients.json', `Update Clients: ${clients.length} users`);
-        if (ok) {
-            showSyncBar('✅ Clients Synced! Admin panel updated everywhere', '');
-            setTimeout(() => hideSyncBar(), 3000);
-            showToast("Clients synced to server!", "success");
-        } else {
-            showSyncBar('❌ Client sync failed', 'error');
-            showToast("Client sync failed", "error");
-        }
-    }
-
-    function showSyncBar(msg, type) {
-        const bar = document.getElementById('syncBar');
-        bar.textContent = msg;
-        bar.className = 'sync-bar show ' + type;
-    }
-    function hideSyncBar() {
-        document.getElementById('syncBar').className = 'sync-bar';
-    }
-
+    // ==========================================
+    // TOAST & HELPERS
+    // ==========================================
     function showToast(msg, type) {
         const t = document.createElement('div');
         t.className = 'toast';
-        t.innerHTML = (type==='success'?'✨ ':(type==='error'?'❌ ':'⚠️ ')) + msg;
+        t.innerHTML = (type==='success'?'✅ ':(type==='error'?'❌ ':'ℹ️ ')) + msg;
         document.body.appendChild(t);
-        setTimeout(() => t.remove(), 3000);
+        setTimeout(() => t.remove(), 3500);
     }
 
     function escapeHtml(str) {
         return String(str || '').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]);
     }
 
-    // ============ ROLE SELECTION ============
-    function selectRole(role) {
+    // ==========================================
+    // ROLE SELECTION
+    // ==========================================
+    window.selectRole = function(role) {
         document.getElementById('roleSelector').classList.add('hidden');
         if(role === 'admin') {
             document.getElementById('adminLoginPanel').classList.remove('hidden');
@@ -530,10 +286,10 @@
             const savedEmail = localStorage.getItem('last_client_email');
             if(savedEmail) {
                 document.getElementById('clientEmail').value = savedEmail;
-                setTimeout(() => autoClientLogin(), 100);
+                setTimeout(() => autoClientLogin(), 200);
             }
         }
-    }
+    };
 
     function autoClientLogin() {
         const email = document.getElementById('clientEmail').value.trim();
@@ -546,22 +302,20 @@
         }
     }
 
-    function adminLogin() {
+    window.adminLogin = function() {
         if(document.getElementById('adminPassword').value === 'REX0303') {
             currentRole = 'admin';
             document.getElementById('adminLoginPanel').classList.add('hidden');
             document.getElementById('adminDashboard').classList.remove('hidden');
-            loadFromCloud().then(() => {
-                renderAdmin();
-                renderClientList();
-            });
-            showToast("Welcome Admin!", "success");
+            renderAdmin();
+            renderClientList();
+            showToast("Welcome Admin! Live sync active", "success");
         } else {
             document.getElementById('adminLoginError').innerText = "Incorrect password";
         }
-    }
+    };
 
-    function clientLogin() { performClientLogin(false); }
+    window.clientLogin = function() { performClientLogin(false); };
 
     function performClientLogin(isAuto) {
         const name = document.getElementById('clientName').value.trim();
@@ -573,18 +327,26 @@
 
         let existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
         if(existing && existing.isBanned) {
-            document.getElementById('clientLoginError').innerHTML = '<i class="fas fa-gavel"></i> Account Banned!';
+            document.getElementById('clientLoginError').innerHTML = '🚫 Account Banned! Contact admin.';
             return;
         }
 
         if(existing) {
-            existing.name = name;
-            existing.country = country;
-            existing.lastLogin = new Date().toISOString();
-            currentClient = existing;
+            const updates = {};
+            updates[existing.firebaseKey] = {
+                ...existing,
+                name: name,
+                country: country,
+                lastLogin: new Date().toISOString()
+            };
+            update(ref(database, 'clients'), updates);
+            currentClient = {...existing, name, country, lastLogin: new Date().toISOString()};
+            if(!isAuto) showToast(`Welcome back ${escapeHtml(name)}!`, "success");
         } else {
-            currentClient = {
-                id: Date.now().toString(),
+            const newClientRef = push(clientsRef);
+            const newClient = {
+                id: newClientRef.key,
+                firebaseKey: newClientRef.key,
                 name: name,
                 country: country,
                 email: email,
@@ -592,12 +354,10 @@
                 registrationDate: new Date().toISOString(),
                 lastLogin: new Date().toISOString()
             };
-            clients.push(currentClient);
+            set(newClientRef, newClient);
+            currentClient = newClient;
+            showToast(`✅ Registered! Welcome ${escapeHtml(name)}`, "success");
         }
-
-        saveLocal();
-        // Auto-sync clients to cloud so admin sees them
-        syncClientsToGitHub();
 
         localStorage.setItem('last_client_email', email);
         currentRole = 'client';
@@ -606,10 +366,9 @@
         document.getElementById('clientUserNameDisplay').innerHTML = escapeHtml(currentClient.name);
         document.getElementById('clientCountryDisplay').innerHTML = currentClient.country;
         renderClient();
-        showToast(`Welcome ${escapeHtml(name)}!`, "success");
     }
 
-    function logout() {
+    window.logout = function() {
         currentRole = null;
         currentClient = null;
         document.getElementById('adminDashboard').classList.add('hidden');
@@ -617,53 +376,72 @@
         document.getElementById('roleSelector').classList.remove('hidden');
         document.getElementById('adminLoginPanel').classList.add('hidden');
         document.getElementById('clientLoginPanel').classList.add('hidden');
-        hideSyncBar();
-    }
+    };
 
-    function toggleBan(id) {
-        const c = clients.find(c => c.id === id);
-        if(c) { c.isBanned = !c.isBanned; saveLocal(); syncClientsToGitHub(); renderClientList(); }
-    }
-
-    function deleteUser(id) {
-        const c = clients.find(c => c.id === id);
-        if(c && confirm(`Delete ${c.name} permanently?`)) {
-            clients = clients.filter(c => c.id !== id);
-            saveLocal();
-            syncClientsToGitHub();
-            renderClientList();
+    // ==========================================
+    // MANAGE CLIENTS
+    // ==========================================
+    window.toggleBan = function(firebaseKey) {
+        const c = clients.find(c => c.firebaseKey === firebaseKey);
+        if(c) {
+            const updates = {};
+            updates[firebaseKey] = {...c, isBanned: !c.isBanned};
+            update(ref(database, 'clients'), updates);
+            showToast(`${c.name} ${c.isBanned ? 'Unbanned' : 'BANNED'}`, "info");
         }
-    }
+    };
+
+    window.deleteUser = function(firebaseKey) {
+        const c = clients.find(c => c.firebaseKey === firebaseKey);
+        if(c && confirm(`Permanently delete ${c.name}?`)) {
+            remove(ref(database, `clients/${firebaseKey}`));
+            showToast(`${c.name} deleted`, "info");
+        }
+    };
 
     function renderClientList() {
         const container = document.getElementById('adminClientsList');
+        const totalEl = document.getElementById('totalClients');
         if(!container) return;
+        if(totalEl) totalEl.innerText = clients.length;
+        
         if(clients.length === 0) {
-            container.innerHTML = '<div style="padding:1rem; text-align:center; opacity:0.6;">No clients yet. They appear after registering.</div>';
+            container.innerHTML = '<div style="padding:2rem; text-align:center; opacity:0.5;">No clients yet. They auto-register here when anyone logs in.</div>';
             return;
         }
         container.innerHTML = clients.map(c => `
-            <div style="background:rgba(255,255,255,0.05); border-radius:1rem; padding:0.8rem; margin-bottom:0.5rem; border-left:3px solid ${c.isBanned?'#ef4444':'#c084fc'}">
-                <strong>${escapeHtml(c.name)}</strong> <span class="country-badge">${escapeHtml(c.country)}</span> ${c.isBanned?'<span class="badge banned-badge">BANNED</span>':''}
-                <div style="font-size:0.7rem;">📧 ${escapeHtml(c.email)} | 🕐 ${new Date(c.lastLogin).toLocaleString()}</div>
-                <button class="ban-btn ${c.isBanned?'unban-btn':''}" onclick="toggleBan('${c.id}')">${c.isBanned?'✓ Unban':'🔨 Ban'}</button>
-                <button class="delete-user-btn" onclick="deleteUser('${c.id}')">🗑️ Delete</button>
+            <div style="background:rgba(255,255,255,0.05); border-radius:1rem; padding:1rem; margin-bottom:0.5rem; border-left:3px solid ${c.isBanned?'#ef4444':'#10b981'}">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                    <strong>${escapeHtml(c.name)}</strong>
+                    <span class="country-badge">${escapeHtml(c.country)}</span>
+                </div>
+                <div style="font-size:0.75rem; margin-top:0.3rem;">📧 ${escapeHtml(c.email)}</div>
+                <div style="font-size:0.65rem; opacity:0.6;">📅 Registered: ${new Date(c.registrationDate).toLocaleDateString()} | 🕐 Last: ${new Date(c.lastLogin).toLocaleString()}</div>
+                ${c.isBanned ? '<span class="badge banned-badge">🚫 BANNED</span>' : '<span class="badge" style="background:rgba(34,197,94,0.2);border-color:#22c55e;">✅ Active</span>'}
+                <div style="margin-top:8px; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <button class="ban-btn ${c.isBanned?'unban-btn':''}" onclick="toggleBan('${c.firebaseKey}')">${c.isBanned?'✅ Unban':'🔨 Ban'}</button>
+                    <button class="delete-user-btn" onclick="deleteUser('${c.firebaseKey}')">🗑️ Delete</button>
+                </div>
             </div>
         `).join('');
     }
 
-    // ============ ADD APK ============
-    async function addAPK() {
+    // ==========================================
+    // MANAGE APKS
+    // ==========================================
+    window.addAPK = function() {
         const n = document.getElementById('appName').value.trim();
         const i = document.getElementById('logoUrl').value.trim();
         const l = document.getElementById('downloadLink').value.trim();
-        if(!n || !i || !l) { showToast("Name, Icon & Link required", "error"); return; }
+        if(!n || !i || !l) { showToast("Name, Icon URL & APK Link required", "error"); return; }
 
-        apks.unshift({
-            id: Date.now().toString(),
+        const newApkRef = push(apksRef);
+        set(newApkRef, {
+            id: newApkRef.key,
+            firebaseKey: newApkRef.key,
             name: n,
             version: document.getElementById('appVersion').value.trim() || "1.0",
-            date: new Date().toLocaleDateString(),
+            date: new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }),
             category: document.getElementById('appCategory').value.trim() || "General",
             type: document.getElementById('appType').value,
             icon: i,
@@ -672,50 +450,44 @@
             feedbacks: []
         });
 
-        saveLocal();
-        renderAdmin();
-
-        // Clear form
         ['appName','appVersion','logoUrl','appCategory','appDesc','downloadLink'].forEach(id => {
             document.getElementById(id).value = '';
         });
 
-        // AUTO SYNC
-        await syncAPKsToGitHub();
-    }
+        showToast("✅ APK Published! Instantly visible on all devices", "success");
+    };
 
-    function deleteAPK(id) {
-        if(confirm("Delete this APK?")) {
-            apks = apks.filter(a => a.id !== id);
-            saveLocal();
-            renderAdmin();
-            syncAPKsToGitHub();
-            showToast("APK deleted & synced", "info");
+    window.deleteAPK = function(firebaseKey) {
+        if(confirm("Delete this APK permanently?")) {
+            remove(ref(database, `apks/${firebaseKey}`));
+            showToast("APK deleted from all devices", "info");
         }
-    }
+    };
 
-    function editAPK(id) {
-        const a = apks.find(a => a.id === id);
+    window.editAPK = function(firebaseKey) {
+        const a = apks.find(a => a.firebaseKey === firebaseKey);
         if(a) {
             const n = prompt("Name:", a.name); if(n) a.name = n;
             const v = prompt("Version:", a.version); if(v) a.version = v;
             const u = prompt("Icon URL:", a.icon); if(u) a.icon = u;
             const d = prompt("Download link:", a.downloadUrl); if(d) a.downloadUrl = d;
-            saveLocal();
-            renderAdmin();
-            syncAPKsToGitHub();
-            showToast("APK updated & synced", "success");
+            const updates = {};
+            updates[firebaseKey] = a;
+            update(ref(database, 'apks'), updates);
+            showToast("APK updated on all devices", "success");
         }
-    }
+    };
 
-    function deleteFeedback(apkId, idx) {
-        const a = apks.find(a => a.id === apkId);
+    window.deleteFeedback = function(firebaseKey, idx) {
+        const a = apks.find(a => a.firebaseKey === firebaseKey);
         if(a && a.feedbacks[idx]) {
             a.feedbacks.splice(idx, 1);
-            saveLocal();
-            renderAdmin();
+            const updates = {};
+            updates[firebaseKey] = a;
+            update(ref(database, 'apks'), updates);
+            showToast("Feedback removed", "info");
         }
-    }
+    };
 
     function renderAdmin() {
         const search = document.getElementById('adminSearch')?.value?.toLowerCase() || '';
@@ -725,38 +497,43 @@
             <div class="apk-card">
                 <div class="app-icon"><img src="${escapeHtml(a.icon)}" onerror="this.src='https://placehold.co/65'"></div>
                 <div class="app-name">${escapeHtml(a.name)}</div>
-                <div class="app-version">${escapeHtml(a.version)}</div>
-                <div class="app-category">${escapeHtml(a.category)}</div>
-                <div style="margin-top:0.8rem;">
-                    <button class="btn-primary" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.id}')">✏️ Edit</button>
-                    <button class="btn-primary btn-danger" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.id}')">🗑️ Delete</button>
+                <div class="app-version">v${escapeHtml(a.version)}</div>
+                <span class="app-category">${escapeHtml(a.category)}</span>
+                <div style="margin-top:0.8rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <button class="btn-primary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.firebaseKey}')">✏️ Edit</button>
+                    <button class="btn-primary btn-danger" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.firebaseKey}')">🗑️ Delete</button>
                 </div>
                 <div class="feedback-section">
-                    <strong>💬 Feedback (${a.feedbacks.length})</strong>
-                    ${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(fb.user)}</span>: ${escapeHtml(fb.comment)} <span onclick="deleteFeedback('${a.id}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') || '<div style="opacity:0.6;">No feedback</div>'}
+                    <strong>💬 Comments (${a.feedbacks ? a.feedbacks.length : 0})</strong>
+                    ${a.feedbacks ? a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(fb.user)}</span>: ${escapeHtml(fb.comment)} <span onclick="deleteFeedback('${a.firebaseKey}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') : '<div style="opacity:0.5;">No comments</div>'}
                 </div>
             </div>
         `).join('');
     }
 
-    function clientAddFeedback(id) {
+    // ==========================================
+    // CLIENT FUNCTIONS
+    // ==========================================
+    window.clientAddFeedback = function(firebaseKey) {
         if(!currentClient) return;
-        const c = document.getElementById(`fb_${id}`)?.value;
-        if(!c?.trim()) { showToast("Write a comment", "error"); return; }
-        const a = apks.find(a => a.id === id);
+        const c = document.getElementById(`fb_${firebaseKey}`)?.value;
+        if(!c?.trim()) { showToast("Write a comment first", "error"); return; }
+        const a = apks.find(a => a.firebaseKey === firebaseKey);
         if(a) {
+            if(!a.feedbacks) a.feedbacks = [];
             a.feedbacks.push({user: currentClient.name, comment: c.trim()});
-            saveLocal();
-            syncAPKsToGitHub();
-            renderClient();
+            const updates = {};
+            updates[firebaseKey] = a;
+            update(ref(database, 'apks'), updates);
+            if(document.getElementById(`fb_${firebaseKey}`)) document.getElementById(`fb_${firebaseKey}`).value = '';
             showToast("Comment added!", "success");
         }
-    }
+    };
 
-    function downloadApk(url, name) {
+    window.downloadApk = function(url, name) {
         window.open(url, '_blank');
         showToast(`Downloading ${name}...`, "success");
-    }
+    };
 
     function renderClient() {
         if(!currentClient) return;
@@ -764,51 +541,37 @@
         const f = apks.filter(a => a.type==='featured' && a.name.toLowerCase().includes(search));
         const r = apks.filter(a => a.type==='recent' && a.name.toLowerCase().includes(search));
         document.getElementById('clientTotalApps').innerText = apks.length;
-        document.getElementById('featuredGrid').innerHTML = f.length ? f.map(a => clientCard(a)).join('') : '<div style="text-align:center;padding:2rem;">No featured apps</div>';
-        document.getElementById('recentGrid').innerHTML = r.length ? r.map(a => clientCard(a)).join('') : '<div style="text-align:center;padding:2rem;">No recent apps</div>';
+        document.getElementById('featuredGrid').innerHTML = f.length ? f.map(a => clientCard(a)).join('') : '<div style="text-align:center;padding:2rem;opacity:0.5;">No featured apps</div>';
+        document.getElementById('recentGrid').innerHTML = r.length ? r.map(a => clientCard(a)).join('') : '<div style="text-align:center;padding:2rem;opacity:0.5;">No recent apps</div>';
     }
 
     function clientCard(a) {
         return `<div class="client-card">
             <div class="app-icon"><img src="${escapeHtml(a.icon)}" onerror="this.src='https://placehold.co/65'"></div>
             <div class="app-name">${escapeHtml(a.name)}</div>
-            <div class="app-version">${escapeHtml(a.version)}</div>
+            <div class="app-version">v${escapeHtml(a.version)}</div>
             <span class="app-category">${escapeHtml(a.category)}</span>
             <button class="premium-download" onclick="downloadApk('${escapeHtml(a.downloadUrl)}','${escapeHtml(a.name)}')"><i class="fas fa-download"></i> Download APK</button>
             <div class="feedback-section">
-                <strong>💬 Comments (${a.feedbacks.length})</strong>
-                ${a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(f.user)}</span>: ${escapeHtml(f.comment)}</div>`).join('') || '<div style="opacity:0.6;">No comments</div>'}
-                <textarea id="fb_${a.id}" class="search-input" style="margin-top:0.5rem;padding:0.5rem;font-size:0.7rem;" rows="2" placeholder="Add comment..."></textarea>
-                <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="clientAddFeedback('${a.id}')"><i class="fas fa-paper-plane"></i> Submit</button>
+                <strong>💬 Comments (${a.feedbacks ? a.feedbacks.length : 0})</strong>
+                <div style="max-height:100px;overflow-y:auto;">${a.feedbacks ? a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(f.user)}</span>: ${escapeHtml(f.comment)}</div>`).join('') : '<div style="opacity:0.5;">No comments</div>'}</div>
+                <textarea id="fb_${a.firebaseKey}" class="search-input" style="margin-top:0.5rem;padding:0.5rem;font-size:0.7rem;" rows="2" placeholder="Share your experience..."></textarea>
+                <button class="btn-primary" style="width:100%;margin-top:0.5rem;" onclick="clientAddFeedback('${a.firebaseKey}')"><i class="fas fa-paper-plane"></i> Submit</button>
             </div>
         </div>`;
     }
 
-    // ============ GLOBAL FUNCTIONS ============
-    window.editAPK = editAPK;
-    window.deleteAPK = deleteAPK;
-    window.deleteFeedback = deleteFeedback;
-    window.clientAddFeedback = clientAddFeedback;
-    window.downloadApk = downloadApk;
-    window.selectRole = selectRole;
-    window.adminLogin = adminLogin;
-    window.clientLogin = clientLogin;
-    window.logout = logout;
-    window.toggleBan = toggleBan;
-    window.deleteUser = deleteUser;
-    window.addAPK = addAPK;
-    window.syncClientsToGitHub = syncClientsToGitHub;
-    window.renderAdmin = renderAdmin;
-    window.renderClient = renderClient;
-
-    // ============ PARTICLES ============
+    // ==========================================
+    // PARTICLES
+    // ==========================================
     function createParticles() {
         const container = document.getElementById('particleField');
         for(let i = 0; i < 60; i++) {
             const p = document.createElement('div');
             p.className = 'particle';
-            p.style.width = (Math.random()*3+1)+'px';
-            p.style.height = p.style.width;
+            const size = Math.random()*3+1;
+            p.style.width = size+'px';
+            p.style.height = size+'px';
             p.style.left = Math.random()*100+'%';
             p.style.animationDuration = (Math.random()*8+4)+'s';
             p.style.animationDelay = Math.random()*5+'s';
@@ -816,8 +579,7 @@
         }
     }
 
-    // ============ INIT ============
-    loadFromCloud().then(() => { createParticles(); });
+    createParticles();
 </script>
 </body>
 </html>
