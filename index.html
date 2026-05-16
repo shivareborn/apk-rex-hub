@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>APK Rex Premium | Elite App Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a1a;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .premium-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.35;
+            animation: floatPremium 20s infinite alternate ease-in-out;
+        }
+        .orb-1 { width: 70vw; height: 70vw; background: radial-gradient(circle, #8b5cf6, #3b82f6); top: -30%; left: -20%; animation-duration: 25s; }
+        .orb-2 { width: 55vw; height: 55vw; background: radial-gradient(circle, #ec4899, #f97316); bottom: -25%; right: -15%; animation-duration: 30s; animation-delay: -3s; }
+        .orb-3 { width: 45vw; height: 45vw; background: radial-gradient(circle, #06b6d4, #8b5cf6); top: 40%; left: 55%; animation-duration: 22s; animation-delay: -7s; }
+        .orb-4 { width: 35vw; height: 35vw; background: radial-gradient(circle, #fbbf24, #ef4444); top: 60%; left: -10%; animation-duration: 28s; animation-delay: -5s; }
+        @keyframes floatPremium {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(4%, 6%) scale(1.15); }
+        }
+        .particle-field {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: floatParticle linear infinite;
+        }
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            position: relative;
+        }
+        .role-selector {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            perspective: 1000px;
+        }
+        .premium-role-btn {
+            position: relative;
+            background: rgba(20, 25, 55, 0.6);
+            backdrop-filter: blur(15px);
+            border: 1.5px solid rgba(139, 92, 246, 0.5);
+            padding: 1.2rem 3rem;
+            border-radius: 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        .premium-role-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: left 0.6s;
+        }
+        .premium-role-btn:hover::before { left: 100%; }
+        .premium-role-btn i { margin-right: 12px; font-size: 1.3rem; }
+        .admin-btn {
+            background: linear-gradient(135deg, rgba(30, 25, 60, 0.7), rgba(45, 30, 80, 0.7));
+            border-color: rgba(139, 92, 246, 0.7);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+        }
+        .admin-btn:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.6), 0 0 20px rgba(139, 92, 246, 0.4);
+            border-color: #a78bfa;
+        }
+        .client-btn {
+            background: linear-gradient(135deg, rgba(20, 40, 60, 0.7), rgba(10, 50, 70, 0.7));
+            border-color: rgba(6, 182, 212, 0.7);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+        }
+        .client-btn:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(6, 182, 212, 0.6), 0 0 20px rgba(6, 182, 212, 0.4);
+            border-color: #22d3ee;
+        }
+        .premium-login-card {
+            max-width: 500px;
+            margin: 2rem auto;
+            background: rgba(15, 20, 40, 0.85);
+            backdrop-filter: blur(25px);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            animation: cardGlowIn 0.7s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-login-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent);
+            animation: rotateGlow 12s linear infinite;
+        }
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes cardGlowIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(5px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+        .premium-login-card h2 {
+            background: linear-gradient(135deg, #ffffff, #c084fc, #a78bfa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1.8rem;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 1.5rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-input:focus {
+            outline: none;
+            border-color: #c084fc;
+            box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
+            transform: scale(1.01);
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .premium-select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            border-radius: 1.5rem;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+        .premium-select option { background: #1a1a2e; color: white; }
+        .premium-login-btn {
+            background: linear-gradient(135deg, #7c3aed, #c084fc, #a78bfa);
+            background-size: 200% 200%;
+            animation: btnShine 3s ease infinite;
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+        @keyframes btnShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .premium-login-btn:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+            box-shadow: 0 5px 25px rgba(124, 58, 237, 0.5);
+        }
+        .error-msg { color: #f87171; font-size: 0.8rem; margin-top: 0.5rem; position: relative; z-index: 1; }
+        .logout-area { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+        .logout-btn { background: rgba(239,68,68,0.8); padding: 0.5rem 1.2rem; border-radius: 2rem; border: none; color: white; cursor: pointer; transition: all 0.3s; }
+        .logout-btn:hover { background: rgba(239,68,68,1); transform: translateY(-2px); }
+        .header { text-align: center; margin-bottom: 2rem; padding: 2rem 1rem; background: rgba(10, 15, 30, 0.5); backdrop-filter: blur(20px); border-radius: 2rem; }
+        .logo { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+        .logo i { font-size: 2.8rem; background: linear-gradient(135deg, #c084fc, #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .logo h1 { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .tagline { font-size: 1rem; color: #a0a8c0; }
+        .badge-premium { display: inline-flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+        .badge { background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.75rem; }
+        .search-section { margin: 2rem 0; }
+        .search-container { max-width: 600px; margin: 0 auto; position: relative; }
+        .search-input { width: 100%; padding: 1rem 1rem 1rem 3rem; background: rgba(20, 25, 45, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(167, 139, 250, 0.3); border-radius: 3rem; color: white; font-family: 'Inter', sans-serif; }
+        .search-input:focus { outline: none; border-color: #c084fc; }
+        .search-icon { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: #a78bfa; }
+        .glass-card { background: rgba(15, 25, 45, 0.7); backdrop-filter: blur(12px); border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.15); padding: 1.5rem; margin-bottom: 2rem; }
+        .form-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .input-group { flex: 1 1 200px; }
+        .input-group label { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: #a78bfa; }
+        .input-group input, .input-group textarea, .input-group select { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); border-radius: 1rem; padding: 0.7rem 1rem; color: white; }
+        .btn-primary { background: linear-gradient(95deg, #7c3aed, #c084fc); border: none; padding: 0.7rem 1.5rem; border-radius: 2rem; color: white; font-weight: 600; cursor: pointer; }
+        .btn-danger { background: linear-gradient(95deg, #dc2626, #ef4444); }
+        .apps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .apk-card, .client-card { background: rgba(12, 20, 35, 0.7); backdrop-filter: blur(12px); border-radius: 1.5rem; padding: 1.2rem; border: 1px solid rgba(255,255,255,0.08); transition: 0.3s; }
+        .apk-card:hover, .client-card:hover { transform: translateY(-5px); border-color: #a78bfa; }
+        .app-icon { width: 65px; height: 65px; border-radius: 1.2rem; background: linear-gradient(145deg, #1e1b4b, #11162e); display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 0.8rem; }
+        .app-icon img { width: 100%; height: 100%; object-fit: cover; }
+        .app-name { font-size: 1.1rem; font-weight: 700; }
+        .app-version { font-size: 0.7rem; color: #a78bfa; }
+        .app-category { display: inline-block; font-size: 0.6rem; background: rgba(124, 58, 237, 0.2); padding: 0.2rem 0.6rem; border-radius: 1rem; margin-top: 0.5rem; }
+        .premium-download { background: linear-gradient(95deg, #7c3aed, #c084fc); width: 100%; padding: 0.6rem; border-radius: 2rem; border: none; color: white; font-weight: 600; cursor: pointer; margin-top: 0.8rem; }
+        .feedback-section { margin-top: 0.8rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .feedback-item { font-size: 0.7rem; background: rgba(0,0,0,0.3); padding: 0.3rem; border-radius: 0.5rem; margin-bottom: 0.3rem; }
+        .stats-row { display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap; }
+        .stat-item { background: rgba(15, 22, 40, 0.6); padding: 0.5rem 1.2rem; border-radius: 2rem; font-size: 0.8rem; }
+        .stat-item i { margin-right: 6px; color: #c084fc; }
+        .section-header { display: flex; justify-content: space-between; align-items: baseline; margin: 1.5rem 0 1rem; }
+        .section-title { font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .toast { position: fixed; bottom: 25px; right: 25px; background: #1e293b; backdrop-filter: blur(12px); padding: 0.8rem 1.5rem; border-radius: 2rem; border-left: 3px solid #c084fc; z-index: 2000; animation: slideToast 0.3s ease; }
+        @keyframes slideToast { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        .hidden { display: none; }
+        .country-badge { background: #3b82f6; border-radius: 20px; padding: 2px 8px; font-size: 0.7rem; margin-left: 8px; }
+        .banned-badge { background: rgba(220,38,38,0.3); border-color: #ef4444; color: #fca5a5; }
+        .ban-btn { background: rgba(220,38,38,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 8px; transition: all 0.2s; }
+        .ban-btn:hover { background: #dc2626; transform: scale(1.05); }
+        .unban-btn { background: rgba(34,197,94,0.8); }
+        .unban-btn:hover { background: #22c55e; }
+        .delete-user-btn { background: rgba(100,100,100,0.8); border: none; padding: 4px 12px; border-radius: 20px; color: white; cursor: pointer; font-size: 0.7rem; margin-left: 5px; transition: all 0.2s; }
+        .delete-user-btn:hover { background: #ef4444; transform: scale(1.05); }
+        
+        /* Sync Button Styles */
+        .sync-section {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .sync-btn {
+            background: linear-gradient(95deg, #059669, #10b981);
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .sync-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+        }
+        .sync-status {
+            font-size: 0.8rem;
+            padding: 0.7rem;
+            border-radius: 1rem;
+            background: rgba(0,0,0,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.6; }
+        @media (max-width: 700px) { .container { padding: 1rem; } .logo h1 { font-size: 1.8rem; } .premium-role-btn { padding: 0.8rem 1.8rem; font-size: 1rem; } }
+    </style>
+</head>
+<body>
+<div class="premium-bg">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+    <div class="gradient-orb orb-4"></div>
+</div>
+<div class="particle-field" id="particleField"></div>
+<div class="noise-overlay"></div>
+
+<div class="container">
+    <div id="roleSelector" class="role-selector">
+        <button class="premium-role-btn admin-btn" onclick="selectRole('admin')"><i class="fas fa-crown"></i> ADMIN REX</button>
+        <button class="premium-role-btn client-btn" onclick="selectRole('client')"><i class="fas fa-gem"></i> CLIENT PORTAL</button>
+    </div>
+
+    <div id="adminLoginPanel" class="premium-login-card hidden">
+        <h2><i class="fas fa-shield-haltered"></i> Admin Authentication</h2>
+        <input type="password" id="adminPassword" class="premium-input" placeholder="Enter Master Password">
+        <button class="premium-login-btn" onclick="adminLogin()"><i class="fas fa-unlock-alt"></i> Access Dashboard</button>
+        <div id="adminLoginError" class="error-msg"></div>
+        <p style="margin-top:1rem; font-size:0.7rem; text-align:center; opacity:0.7;">🔐 Secure Access: <strong style="color:#c084fc;">REX0303</strong></p>
+    </div>
+
+    <div id="clientLoginPanel" class="premium-login-card hidden">
+        <h2><i class="fas fa-user-astronaut"></i> Client Access</h2>
+        <input type="text" id="clientName" class="premium-input" placeholder="Full Name *">
+        <select id="clientCountry" class="premium-select">
+            <option value="United States">🇺🇸 United States</option>
+            <option value="Canada">🇨🇦 Canada</option>
+            <option value="United Kingdom">🇬🇧 United Kingdom</option>
+            <option value="Germany">🇩🇪 Germany</option>
+            <option value="France">🇫🇷 France</option>
+            <option value="India">🇮🇳 India</option>
+            <option value="Brazil">🇧🇷 Brazil</option>
+            <option value="Japan">🇯🇵 Japan</option>
+            <option value="Australia">🇦🇺 Australia</option>
+            <option value="Mexico">🇲🇽 Mexico</option>
+            <option value="Spain">🇪🇸 Spain</option>
+            <option value="Italy">🇮🇹 Italy</option>
+            <option value="South Africa">🇿🇦 South Africa</option>
+            <option value="Other">🌍 Other</option>
+        </select>
+        <input type="email" id="clientEmail" class="premium-input" placeholder="Email Address *">
+        <button class="premium-login-btn" onclick="clientLogin()"><i class="fas fa-meteor"></i> Enter Hub</button>
+        <div id="clientLoginError" class="error-msg"></div>
+        <p style="margin-top:1rem; font-size:0.7rem; text-align:center;"><i class="fas fa-save"></i> Data saved permanently | Auto-login enabled</p>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="adminDashboard" class="hidden">
+        <div class="logout-area">
+            <div><i class="fas fa-shield-alt"></i> Admin Mode | Full Control</div>
+            <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div class="header">
+            <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex Premium App Hub</h1></div>
+            <div class="tagline">Admin Panel - Manage your APKs & Clients</div>
+        </div>
+        
+        <!-- SYNC BUTTONS -->
+        <div class="glass-card">
+            <h2><i class="fas fa-sync-alt"></i> Sync & Update Website</h2>
+            <div class="sync-section">
+                <button class="sync-btn" onclick="syncToGitHub()"><i class="fas fa-cloud-upload-alt"></i> Sync All Data to GitHub</button>
+                <button class="btn-primary" onclick="downloadUpdatedHTML()"><i class="fas fa-download"></i> Download Updated HTML</button>
+                <span id="syncStatus" class="sync-status">Ready to sync</span>
+            </div>
+            <p style="font-size:0.75rem; margin-top:0.5rem; opacity:0.7;">
+                <i class="fas fa-info-circle"></i> Click "Sync to GitHub" to auto-update your live website.<br>
+                Or use "Download Updated HTML" to manually replace the file on GitHub.
+            </p>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-plus-circle"></i> Add New App</h2>
+            <div class="form-grid">
+                <div class="input-group"><label>Name *</label><input type="text" id="appName" placeholder="Ej: Spotify Premium"></div>
+                <div class="input-group"><label>Version *</label><input type="text" id="appVersion" placeholder="8.9.18"></div>
+                <div class="input-group"><label>Icon URL *</label><input type="text" id="logoUrl" placeholder="https://..."></div>
+                <div class="input-group"><label>Category</label><input type="text" id="appCategory" placeholder="Music, Games, etc"></div>
+                <div class="input-group"><label>Description</label><textarea id="appDesc" rows="2" placeholder="App description..."></textarea></div>
+                <div class="input-group"><label>APK Link *</label><input type="text" id="downloadLink" placeholder="https://...apk"></div>
+                <div class="input-group"><label>Type</label><select id="appType" style="background:rgba(0,0,0,0.5); border-radius:1rem; padding:0.7rem; color:white;"><option value="featured">Featured</option><option value="recent">Recent</option></select></div>
+                <div class="input-group"><button class="btn-primary" id="addBtn"><i class="fas fa-upload"></i> Publish APK</button></div>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2><i class="fas fa-users"></i> Registered Clients (Manage Users)</h2>
+            <div id="adminClientsList" style="max-height: 350px; overflow-y: auto; margin-top: 1rem;"></div>
+        </div>
+
+        <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="adminSearch" class="search-input" placeholder="Search APK..."></div></div>
+        <div class="section-header"><div class="section-title"><i class="fas fa-database"></i> All APKs</div><div class="stat-item"><i class="fas fa-mobile-alt"></i> <span id="adminTotalApps">0</span> Apps</div></div>
+        <div id="adminAppsContainer" class="apps-grid"></div>
+        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium App Hub Admin - Full Management</footer>
+    </div>
+
+    <!-- CLIENT DASHBOARD -->
+    <div id="clientDashboard" class="hidden">
+        <div class="logout-area">
+            <span><i class="fas fa-user-circle"></i> <span id="clientUserNameDisplay"></span> <span id="clientCountryDisplay" class="country-badge"></span></span>
+            <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div class="header">
+            <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex | Premium App Hub</h1></div>
+            <div class="tagline">The best Android apps and games</div>
+            <div class="badge-premium"><span class="badge"><i class="fas fa-check-circle"></i> 100% Secure</span><span class="badge"><i class="fas fa-bolt"></i> Fast Download</span></div>
+        </div>
+        <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="clientSearch" class="search-input" placeholder="Find your favorite game or app..."></div></div>
+        <div class="stats-row"><div class="stat-item"><i class="fas fa-mobile-alt"></i> <span id="clientTotalApps">0</span> Apps</div><div class="stat-item"><i class="fas fa-download"></i> +15K Downloads</div></div>
+        <div class="section-header"><div class="section-title"><i class="fas fa-fire"></i> Featured Apps</div></div>
+        <div id="featuredGrid" class="apps-grid"></div>
+        <div class="section-header"><div class="section-title"><i class="fas fa-clock"></i> Recent Updates</div></div>
+        <div id="recentGrid" class="apps-grid"></div>
+        <footer><i class="fas fa-shield-alt"></i> APK Rex Premium App Hub - Your trusted APK store</footer>
+    </div>
+</div>
+
+<script>
+    // ============ CONFIGURATION ============
+    // Replace with your GitHub username and repo name
+    const GITHUB_USERNAME = "YOUR_GITHUB_USERNAME";
+    const GITHUB_REPO = "apk-rex-hub";
+    const GITHUB_TOKEN = ""; // Leave empty if repo is public, or add a Personal Access Token
+    
+    // ============ DATA LAYER ============
+    let apks = [], clients = [], currentRole = null, currentClient = null;
+    const STORAGE_APKS = "apk_rex_complete_db", STORAGE_CLIENTS = "apk_rex_clients_db";
+    let searchTermAdmin = "", searchTermClient = "";
+
+    const defaultApks = [
+        { id: "1", name: "1win", version: "1.3.22", date: "March 19, 2026", category: "Betting", type: "featured", icon: "https://picsum.photos/id/104/100/100", description: "The best platform", downloadUrl: "https://example.com/1win.apk", feedbacks: [] },
+        { id: "2", name: "Garena Free Fire", version: "2.123.1", date: "April 11, 2026", category: "Games", type: "featured", icon: "https://picsum.photos/id/155/100/100", description: "Battle Royale", downloadUrl: "https://example.com/freefire.apk", feedbacks: [] },
+        { id: "3", name: "Spotify Premium", version: "8.9.18", date: "May 10, 2026", category: "Music", type: "featured", icon: "https://picsum.photos/id/29/100/100", description: "Unlimited music", downloadUrl: "https://example.com/spotify.apk", feedbacks: [] },
+        { id: "4", name: "Poppy Playtime", version: "0.4.3", date: "May 11, 2026", category: "Games", type: "recent", icon: "https://picsum.photos/id/26/100/100", description: "Horror and puzzles", downloadUrl: "https://example.com/poppy.apk", feedbacks: [] }
+    ];
+
+    function loadData() {
+        const stored = localStorage.getItem(STORAGE_APKS);
+        if(stored) apks = JSON.parse(stored);
+        else { apks = JSON.parse(JSON.stringify(defaultApks)); saveApks(); }
+        apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; if(!a.date) a.date = new Date().toLocaleDateString(); });
+        
+        const storedClients = localStorage.getItem(STORAGE_CLIENTS);
+        if(storedClients) clients = JSON.parse(storedClients);
+        else clients = [];
+    }
+    
+    function saveApks() { localStorage.setItem(STORAGE_APKS, JSON.stringify(apks)); }
+    function saveClients() { localStorage.setItem(STORAGE_CLIENTS, JSON.stringify(clients)); }
+    function showToast(msg, type) { let t = document.createElement('div'); t.className = 'toast'; t.innerHTML = (type==='success'?'✨ ':'⚠️ ')+msg; document.body.appendChild(t); setTimeout(()=>t.remove(),2500); }
+    function escapeHtml(str) { return String(str || '').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); }
+
+    // ============ GENERATE UPDATED HTML ============
+    function generateUpdatedHTML() {
+        // Clone the current HTML and update the defaultApks array
+        const currentHTML = document.documentElement.outerHTML;
+        
+        // Create the updated defaultApks string
+        const updatedApks = JSON.stringify(apks, null, 8);
+        
+        // Find and replace the defaultApks array in the HTML
+        const apksRegex = /const defaultApks = \[[\s\S]*?\];/;
+        const newApksDeclaration = `const defaultApks = ${updatedApks};`;
+        
+        let updatedHTML = currentHTML.replace(apksRegex, newApksDeclaration);
+        
+        // Also update the GitHub config if changed
+        updatedHTML = updatedHTML.replace(
+            /const GITHUB_USERNAME = ".*";/,
+            `const GITHUB_USERNAME = "${GITHUB_USERNAME}";`
+        );
+        updatedHTML = updatedHTML.replace(
+            /const GITHUB_REPO = ".*";/,
+            `const GITHUB_REPO = "${GITHUB_REPO}";`
+        );
+        
+        return updatedHTML;
+    }
+
+    // ============ DOWNLOAD UPDATED HTML ============
+    function downloadUpdatedHTML() {
+        const updatedHTML = generateUpdatedHTML();
+        const blob = new Blob([updatedHTML], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'index.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        document.getElementById('syncStatus').innerHTML = '<i class="fas fa-check-circle"></i> HTML downloaded! Upload to GitHub';
+        showToast("Updated HTML downloaded! Upload it to GitHub", "success");
+    }
+
+    // ============ SYNC TO GITHUB ============
+    async function syncToGitHub() {
+        const statusEl = document.getElementById('syncStatus');
+        statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Syncing to GitHub...';
+        
+        if (!GITHUB_TOKEN) {
+            statusEl.innerHTML = '<i class="fas fa-info-circle"></i> No GitHub token. Downloading HTML instead...';
+            downloadUpdatedHTML();
+            showToast("Please upload the downloaded file to GitHub manually", "info");
+            return;
+        }
+
+        try {
+            const updatedHTML = generateUpdatedHTML();
+            const content = btoa(unescape(encodeURIComponent(updatedHTML)));
+            
+            // Get current file SHA (needed for update)
+            const getUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/index.html`;
+            const getResponse = await fetch(getUrl, {
+                headers: { 'Authorization': `token ${GITHUB_TOKEN}` }
+            });
+            
+            let sha = '';
+            if (getResponse.ok) {
+                const data = await getResponse.json();
+                sha = data.sha;
+            }
+            
+            // Update file on GitHub
+            const putUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${GITHUB_REPO}/contents/index.html`;
+            const body = {
+                message: '🔄 Auto-sync: Updated APK database',
+                content: content,
+                branch: 'main'
+            };
+            if (sha) body.sha = sha;
+            
+            const putResponse = await fetch(putUrl, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${GITHUB_TOKEN}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+            
+            if (putResponse.ok) {
+                statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Synced! GitHub Pages updating...';
+                showToast("Website synced successfully! Wait 1-2 minutes for update", "success");
+            } else {
+                throw new Error('Failed to update file');
+            }
+        } catch (error) {
+            statusEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Sync failed. Download instead.';
+            showToast("Automatic sync failed. Use Download button instead", "error");
+            downloadUpdatedHTML();
+        }
+    }
+
+    // ============ ROLE SELECTION ============
+    function selectRole(role) {
+        document.getElementById('roleSelector').classList.add('hidden');
+        if(role === 'admin') { 
+            document.getElementById('adminLoginPanel').classList.remove('hidden'); 
+            document.getElementById('clientLoginPanel').classList.add('hidden');
+        } else { 
+            document.getElementById('clientLoginPanel').classList.remove('hidden'); 
+            document.getElementById('adminLoginPanel').classList.add('hidden');
+            const savedEmail = localStorage.getItem('last_client_email');
+            if(savedEmail) { 
+                document.getElementById('clientEmail').value = savedEmail; 
+                setTimeout(() => autoClientLogin(), 100);
+            }
+        }
+    }
+
+    function autoClientLogin() {
+        const email = document.getElementById('clientEmail').value.trim();
+        const existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
+        if(existing && !existing.isBanned) {
+            document.getElementById('clientName').value = existing.name;
+            const countryOption = Array.from(document.getElementById('clientCountry').options).find(opt => opt.value === existing.country);
+            if(countryOption) document.getElementById('clientCountry').value = existing.country;
+            performClientLogin(true);
+        }
+    }
+
+    function adminLogin() {
+        if(document.getElementById('adminPassword').value === 'REX0303') {
+            currentRole = 'admin';
+            document.getElementById('adminLoginPanel').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.remove('hidden');
+            renderAdmin(); 
+            renderClientList();
+            showToast("Welcome Admin!", "success");
+        } else { 
+            document.getElementById('adminLoginError').innerText = "Incorrect password"; 
+        }
+    }
+
+    function clientLogin() { performClientLogin(false); }
+
+    function performClientLogin(isAuto) {
+        let name = document.getElementById('clientName').value.trim();
+        let country = document.getElementById('clientCountry').value;
+        let email = document.getElementById('clientEmail').value.trim();
+        
+        if(!name) { document.getElementById('clientLoginError').innerText = "Full name required"; return; }
+        if(!email || !email.includes('@')) { document.getElementById('clientLoginError').innerText = "Valid email required"; return; }
+        
+        let existing = clients.find(c => c.email.toLowerCase() === email.toLowerCase());
+        if(existing && existing.isBanned) { 
+            document.getElementById('clientLoginError').innerHTML = '<i class="fas fa-gavel"></i> Account Banned! Contact admin.'; 
+            return; 
+        }
+        
+        if(existing) {
+            existing.name = name;
+            existing.country = country;
+            existing.lastLogin = new Date().toISOString();
+            currentClient = existing;
+            saveClients();
+            if(!isAuto) showToast(`Welcome back ${escapeHtml(name)}!`, "success");
+        } else {
+            const newClient = { 
+                id: Date.now().toString(), 
+                name: name, 
+                country: country, 
+                email: email, 
+                isBanned: false, 
+                registrationDate: new Date().toISOString(), 
+                lastLogin: new Date().toISOString() 
+            };
+            clients.push(newClient);
+            saveClients();
+            currentClient = newClient;
+            showToast(`Registered! Welcome ${escapeHtml(name)}`, "success");
+        }
+        
+        localStorage.setItem('last_client_email', email);
+        currentRole = 'client';
+        document.getElementById('clientLoginPanel').classList.add('hidden');
+        document.getElementById('clientDashboard').classList.remove('hidden');
+        document.getElementById('clientUserNameDisplay').innerHTML = escapeHtml(currentClient.name);
+        document.getElementById('clientCountryDisplay').innerHTML = currentClient.country;
+        renderClient();
+    }
+
+    function logout() { 
+        currentRole = null; 
+        currentClient = null; 
+        document.getElementById('adminDashboard').classList.add('hidden'); 
+        document.getElementById('clientDashboard').classList.add('hidden'); 
+        document.getElementById('roleSelector').classList.remove('hidden'); 
+        document.getElementById('adminLoginPanel').classList.add('hidden'); 
+        document.getElementById('clientLoginPanel').classList.add('hidden'); 
+        document.getElementById('clientName').value = '';
+        document.getElementById('clientEmail').value = '';
+    }
+
+    function toggleBan(id) { 
+        let c = clients.find(c => c.id === id); 
+        if(c) { 
+            c.isBanned = !c.isBanned; 
+            saveClients(); 
+            renderClientList(); 
+            showToast(`${c.name} ${c.isBanned ? 'BANNED ❌' : 'Unbanned ✅'}`, "info"); 
+        } 
+    }
+
+    function deleteUser(id) {
+        let c = clients.find(c => c.id === id);
+        if(c && confirm(`Are you sure you want to permanently delete ${c.name} from the database?`)) {
+            clients = clients.filter(c => c.id !== id);
+            saveClients();
+            renderClientList();
+            showToast(`${c.name} has been deleted from database`, "success");
+        }
+    }
+
+    function renderClientList() { 
+        const container = document.getElementById('adminClientsList'); 
+        if(!container) return; 
+        if(clients.length === 0) { 
+            container.innerHTML = '<div style="padding:1rem; text-align:center;">No registered clients yet</div>'; 
+            return; 
+        }
+        container.innerHTML = clients.map(c => `
+            <div style="background:rgba(255,255,255,0.05); border-radius:1rem; padding:0.8rem; margin-bottom:0.5rem; border-left:3px solid ${c.isBanned ? '#ef4444' : '#c084fc'}">
+                <div><strong>${escapeHtml(c.name)}</strong> <span class="country-badge">${escapeHtml(c.country)}</span> ${c.isBanned ? '<span class="badge banned-badge">BLACKLISTED</span>' : ''}</div>
+                <div style="font-size:0.75rem;">📧 ${escapeHtml(c.email)}</div>
+                <div style="font-size:0.65rem; opacity:0.6;">📅 Registered: ${new Date(c.registrationDate).toLocaleDateString()} | Last login: ${new Date(c.lastLogin).toLocaleString()}</div>
+                <div style="margin-top: 8px;">
+                    <button class="ban-btn ${c.isBanned ? 'unban-btn' : ''}" onclick="toggleBan('${c.id}')">${c.isBanned ? '✓ Unban User' : '🔨 Ban User'}</button>
+                    <button class="delete-user-btn" onclick="deleteUser('${c.id}')"><i class="fas fa-trash-alt"></i> Delete Permanently</button>
+                </div>
+            </div>
+        `).join(''); 
+    }
+
+    function addAPK() { 
+        let n = document.getElementById('appName').value.trim(); 
+        let i = document.getElementById('logoUrl').value.trim(); 
+        let l = document.getElementById('downloadLink').value.trim(); 
+        if(!n || !i || !l) { showToast("Name, Icon & Link required", "error"); return; } 
+        apks.unshift({ 
+            id: Date.now().toString(), 
+            name: n, 
+            version: document.getElementById('appVersion').value.trim() || "1.0", 
+            date: new Date().toLocaleDateString(), 
+            category: document.getElementById('appCategory').value.trim() || "General", 
+            type: document.getElementById('appType').value, 
+            icon: i, 
+            description: document.getElementById('appDesc').value.trim() || "", 
+            downloadUrl: l, 
+            feedbacks: [] 
+        }); 
+        saveApks(); 
+        renderAdmin(); 
+        document.getElementById('appName').value = '';
+        document.getElementById('appVersion').value = '';
+        document.getElementById('logoUrl').value = '';
+        document.getElementById('appCategory').value = '';
+        document.getElementById('appDesc').value = '';
+        document.getElementById('downloadLink').value = '';
+        showToast("APK Published! Don't forget to SYNC to update the website!", "success"); 
+    }
+
+    function deleteAPK(id) { if(confirm("Delete this APK?")) { apks = apks.filter(a => a.id !== id); saveApks(); renderAdmin(); if(currentRole === 'client') renderClient(); showToast("APK deleted", "info"); } }
+    function editAPK(id) { let a = apks.find(a => a.id === id); if(a){ let n = prompt("New name:", a.name); if(n) a.name = n; let v = prompt("Version:", a.version); if(v) a.version = v; let u = prompt("Icon URL:", a.icon); if(u) a.icon = u; let d = prompt("Download link:", a.downloadUrl); if(d) a.downloadUrl = d; saveApks(); renderAdmin(); if(currentRole === 'client') renderClient(); showToast("APK updated", "success"); } }
+    function deleteFeedback(apkId, idx) { let a = apks.find(a => a.id === apkId); if(a && a.feedbacks[idx]){ a.feedbacks.splice(idx,1); saveApks(); renderAdmin(); showToast("Feedback removed", "info"); } }
+
+    function renderAdmin() { 
+        let f = apks.filter(a => a.name.toLowerCase().includes(searchTermAdmin.toLowerCase())); 
+        document.getElementById('adminTotalApps').innerText = f.length; 
+        document.getElementById('adminAppsContainer').innerHTML = f.map(a => `
+            <div class="apk-card">
+                <div class="app-icon"><img src="${escapeHtml(a.icon)}" onerror="this.src='https://placehold.co/65'"></div>
+                <div class="app-name">${escapeHtml(a.name)}</div>
+                <div class="app-version">${escapeHtml(a.version)}</div>
+                <div class="app-category">${escapeHtml(a.category)}</div>
+                <div style="margin-top:0.8rem;"><button class="btn-primary" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.id}')">✏️ Edit</button> 
+                <button class="btn-primary btn-danger" style="padding:0.3rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.id}')">🗑️ Delete</button></div>
+                <div class="feedback-section"><strong>💬 Feedback (${a.feedbacks.length})</strong>${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(fb.user)}</span>: ${escapeHtml(fb.comment)} <span onclick="deleteFeedback('${a.id}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') || '<div style="opacity:0.6;">No feedback</div>'}</div>
+            </div>
+        `).join(''); 
+    }
+
+    function clientAddFeedback(id) { 
+        if(!currentClient) return; 
+        let c = document.getElementById(`feedback_${id}`)?.value; 
+        if(!c?.trim()){ showToast("Write a comment", "error"); return; } 
+        let a = apks.find(a => a.id === id); 
+        if(a){ 
+            a.feedbacks.push({user: currentClient.name, comment: c.trim()}); 
+            saveApks(); 
+            renderClient(); 
+            showToast("Comment added!", "success"); 
+        } 
+        if(document.getElementById(`feedback_${id}`)) document.getElementById(`feedback_${id}`).value = ''; 
+    }
+
+    function downloadApk(url, name) { window.open(url, '_blank'); showToast(`Downloading ${name}...`, "success"); }
+
+    function renderClient() { 
+        if(!currentClient) return; 
+        let f = apks.filter(a => a.type === 'featured' && a.name.toLowerCase().includes(searchTermClient.toLowerCase())); 
+        let r = apks.filter(a => a.type === 'recent' && a.name.toLowerCase().includes(searchTermClient.toLowerCase())); 
+        document.getElementById('clientTotalApps').innerText = apks.length; 
+        document.getElementById('featuredGrid').innerHTML = f.length ? f.map(a => clientCard(a)).join('') : '<div style="text-align:center; padding:2rem;">No featured apps</div>'; 
+        document.getElementById('recentGrid').innerHTML = r.length ? r.map(a => clientCard(a)).join('') : '<div style="text-align:center; padding:2rem;">No recent apps</div>'; 
+    }
+
+    function clientCard(a) { 
+        return `<div class="client-card">
+            <div class="app-icon"><img src="${escapeHtml(a.icon)}" onerror="this.src='https://placehold.co/65'"></div>
+            <div class="app-name">${escapeHtml(a.name)}</div>
+            <div class="app-version">${escapeHtml(a.version)}</div>
+            <span class="app-category">${escapeHtml(a.category)}</span>
+            <button class="premium-download" onclick="downloadApk('${escapeHtml(a.downloadUrl)}','${escapeHtml(a.name)}')"><i class="fas fa-download"></i> Download APK</button>
+            <div class="feedback-section">
+                <strong>💬 Comments (${a.feedbacks.length})</strong>
+                <div style="max-height:100px; overflow-y:auto;">${a.feedbacks.map(f => `<div class="feedback-item"><span style="color:#c084fc;">${escapeHtml(f.user)}</span>: ${escapeHtml(f.comment)}</div>`).join('') || '<div style="opacity:0.6;">No comments yet</div>'}</div>
+                <textarea id="feedback_${a.id}" class="search-input" style="margin-top:0.5rem; padding:0.5rem; font-size:0.7rem;" rows="2" placeholder="Share your experience..."></textarea>
+                <button class="btn-primary" style="width:100%; margin-top:0.5rem;" onclick="clientAddFeedback('${a.id}')"><i class="fas fa-paper-plane"></i> Submit Comment</button>
+            </div>
+        </div>`; 
+    }
+
+    document.getElementById('adminSearch')?.addEventListener('input', e => { searchTermAdmin = e.target.value; renderAdmin(); });
+    document.getElementById('clientSearch')?.addEventListener('input', e => { searchTermClient = e.target.value; renderClient(); });
+    document.getElementById('addBtn')?.addEventListener('click', addAPK);
+    
+    window.editAPK = editAPK; window.deleteAPK = deleteAPK; window.deleteFeedback = deleteFeedback;
+    window.clientAddFeedback = clientAddFeedback; window.downloadApk = downloadApk;
+    window.selectRole = selectRole; window.adminLogin = adminLogin; window.clientLogin = clientLogin;
+    window.logout = logout; window.toggleBan = toggleBan; window.deleteUser = deleteUser;
+    window.syncToGitHub = syncToGitHub; window.downloadUpdatedHTML = downloadUpdatedHTML;
+
+    function createParticles() { 
+        const container = document.getElementById('particleField'); 
+        for(let i = 0; i < 60; i++) { 
+            const p = document.createElement('div'); 
+            p.className = 'particle'; 
+            const size = Math.random() * 3 + 1; 
+            p.style.width = size + 'px'; 
+            p.style.height = size + 'px'; 
+            p.style.left = Math.random() * 100 + '%'; 
+            p.style.animationDuration = Math.random() * 8 + 4 + 's'; 
+            p.style.animationDelay = Math.random() * 5 + 's'; 
+            p.style.opacity = Math.random() * 0.5 + 0.2; 
+            container.appendChild(p); 
+        } 
+    }
+    
+    loadData(); 
+    createParticles();
+</script>
+</body>
+</html>
