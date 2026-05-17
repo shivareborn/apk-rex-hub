@@ -124,20 +124,7 @@
         @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
         footer { text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.7rem; opacity: 0.6; }
         .clear-search-btn { background: rgba(100,100,150,0.5); border-radius: 2rem; padding: 0.3rem 1rem; font-size: 0.7rem; cursor: pointer; margin-left: 0.5rem; border: none; color: white; }
-        /* Vintage avatar style */
-        .avatar-preview {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            background: #2d2a4e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            cursor: pointer;
-            border: 3px solid #c084fc;
-            box-shadow: 0 0 0 2px rgba(192,132,252,0.3), 0 0 0 5px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-        }
+        .avatar-preview { width: 80px; height: 80px; border-radius: 50%; background: #2d2a4e; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; border: 3px solid #c084fc; box-shadow: 0 0 0 2px rgba(192,132,252,0.3), 0 0 0 5px rgba(0,0,0,0.2); transition: all 0.2s ease; }
         .avatar-preview i { font-size: 2.8rem; color: #e2c6ff; text-shadow: 2px 2px 0px #4a3b7c; }
         .avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
         .avatar-preview:hover { transform: scale(1.02); border-color: #f0a3ff; }
@@ -167,9 +154,7 @@
         <h2><i class="fas fa-user-astronaut"></i> Client Access</h2>
         <div style="text-align:center; margin-bottom:1rem;"><span class="old-avatar-badge"><i class="fas fa-camera-retro"></i> Old school avatar</span></div>
         <div class="avatar-upload" style="display: flex; flex-direction: column; align-items: center; gap: 0.6rem;">
-            <div class="avatar-preview" onclick="document.getElementById('avatarInput').click()" id="avatarPreview">
-                <i class="fas fa-user-ninja"></i>
-            </div>
+            <div class="avatar-preview" onclick="document.getElementById('avatarInput').click()" id="avatarPreview"><i class="fas fa-user-ninja"></i></div>
             <div><p style="font-size:0.75rem; color:#c084fc;">Click to upload new photo</p></div>
             <input type="file" id="avatarInput" accept="image/*" style="display:none;" onchange="handleAvatarUpload(event)">
             <button type="button" class="reset-avatar-btn" onclick="resetToOldAvatar()"><i class="fas fa-history"></i> Reset to old default look</button>
@@ -181,24 +166,28 @@
         <div id="clientLoginError" class="error-msg"></div>
     </div>
 
-    <!-- ADMIN DASHBOARD -->
     <div id="adminDashboard" class="hidden">
-        <div class="logout-area"><div><i class="fas fa-shield-alt"></i> Admin | <span class="live-dot"></span>Live</div><button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button></div>
-        <div class="header"><div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex Premium App Hub</h1></div><div class="tagline">Admin Panel - Full Control • Real-time sync with clients</div></div>
+        <div class="logout-area">
+            <div><i class="fas fa-shield-alt"></i> Admin | <span class="live-dot"></span>Live</div>
+            <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div class="header">
+            <div class="logo"><i class="fas fa-rocket"></i><h1>APK Rex Premium App Hub</h1></div>
+            <div class="tagline">Admin Panel - Full Control • Real-time sync with clients</div>
+        </div>
         <div class="glass-card" style="border: 1px solid rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05);">
             <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;"><div style="background: linear-gradient(135deg, #f59e0b, #ef4444); width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">📢</div><div><h2 style="margin: 0; font-size: 1.2rem; color: #fbbf24;">Broadcast Message</h2><p style="font-size: 0.7rem; opacity: 0.7;">Send important announcements to all clients</p></div></div>
             <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;"><input type="text" id="broadcastMessage" class="premium-input" placeholder="Type your announcement for all clients..." style="flex: 1;"><button class="btn-primary" onclick="sendBroadcast()" style="background: linear-gradient(95deg, #f59e0b, #ef4444);"><i class="fas fa-paper-plane"></i> Send</button><button class="btn-primary" onclick="clearBroadcast()" style="background: rgba(100,100,100,0.5);"><i class="fas fa-trash-alt"></i></button></div>
             <div id="broadcastStatus" style="margin-top: 0.8rem; font-size: 0.75rem;"></div>
         </div>
         <div class="glass-card"><h2><i class="fas fa-plus-circle"></i> Add New App</h2><div class="form-grid"><div class="input-group"><label>Name *</label><input type="text" id="appName" placeholder="App Name"></div><div class="input-group"><label>Version</label><input type="text" id="appVersion" placeholder="1.0"></div><div class="input-group"><label>Icon URL *</label><input type="text" id="logoUrl" placeholder="https://..."></div><div class="input-group"><label>Category</label><input type="text" id="appCategory" placeholder="Games/Tools"></div><div class="input-group"><label>APK Link *</label><input type="text" id="downloadLink" placeholder="https://..."></div><div class="input-group"><label>Type</label><select id="appType"><option value="featured">Featured</option><option value="recent">Recent</option></select></div><div class="input-group"><label>Description</label><textarea id="appDesc" rows="2" placeholder="Description..."></textarea></div><div class="input-group"><button class="btn-primary" onclick="addAPK()" style="width:100%;">Publish APK</button></div></div></div>
-        <div class="glass-card"><h2><i class="fas fa-users"></i> Registered Clients (<span id="totalClients">0</span>)</h2><div id="adminClientsList" style="max-height: 400px; overflow-y: auto;"></div></div>
+        <div class="glass-card"><h2><i class="fas fa-users"></i> Registered Clients (<span id="totalClients">0</span>) <button class="btn-primary" style="padding:0.2rem 0.8rem; font-size:0.7rem; margin-left:1rem;" onclick="renderClientList()"><i class="fas fa-sync-alt"></i> Refresh</button></h2><div id="adminClientsList" style="max-height: 400px; overflow-y: auto;"></div></div>
         <div class="search-section"><div class="search-container"><i class="fas fa-search search-icon"></i><input type="text" id="adminSearch" class="search-input" placeholder="Search APK..." oninput="renderAdmin()"><button id="clearAdminSearchBtn" class="clear-search-btn" onclick="clearAdminSearch()" style="position:absolute; right:5px; top:50%; transform:translateY(-50%); background:#334155;">✖</button></div></div>
         <div class="section-header"><div class="section-title"><i class="fas fa-database"></i> All APKs</div><div class="stat-item"><span id="adminTotalApps">0</span> Apps</div></div>
         <div id="adminAppsContainer" class="apps-grid"></div>
         <footer><i class="fas fa-shield-alt"></i> APK Rex Premium - Live Sync</footer>
     </div>
 
-    <!-- CLIENT DASHBOARD with OLD AVATAR LOOK -->
     <div id="clientDashboard" class="hidden">
         <div id="broadcastBanner" class="broadcast-banner hidden"><div class="broadcast-icon">📢</div><div class="broadcast-content"><span class="broadcast-label">Announcement</span><span class="broadcast-text" id="broadcastText"></span></div><span class="broadcast-timestamp" id="broadcastTime"></span><button class="broadcast-close" onclick="dismissBroadcast()">✕</button></div>
         <div class="logout-area">
@@ -225,28 +214,160 @@
     const firebaseConfig = { apiKey: "AIzaSyAujpgjYaiVOO-obNlYjIUsown5EP-bKAM", authDomain: "apk-37e8f.firebaseapp.com", databaseURL: "https://apk-37e8f-default-rtdb.firebaseio.com", projectId: "apk-37e8f", storageBucket: "apk-37e8f.firebasestorage.app", messagingSenderId: "692595649429", appId: "1:692595649429:web:0a5752bc70f9e54c24649c" };
     const app = initializeApp(firebaseConfig); const db = getDatabase(app);
     let apks = [], clients = [], currentRole = null, currentClient = null, avatarBase64 = "", broadcastData = { message: "", timestamp: "" };
+    let autoLoginPending = false, clientPanelVisible = false;
+
+    // Real‑time listeners
     onValue(ref(db, 'broadcast'), (snap) => { broadcastData = snap.val() || { message: "", timestamp: "" }; updateBroadcastUI(); });
-    onValue(ref(db, 'apks'), (snap) => { const data = snap.val(); apks = []; if(data) Object.keys(data).forEach(k => apks.push({...data[k], firebaseKey: k})); apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; }); if(currentRole === 'admin') renderAdmin(); if(currentRole === 'client') renderClient(); });
-    onValue(ref(db, 'clients'), (snap) => { const data = snap.val(); clients = []; if(data) Object.keys(data).forEach(k => clients.push({...data[k], firebaseKey: k})); if(currentRole === 'admin') renderClientList(); });
+    onValue(ref(db, 'apks'), (snap) => { 
+        const data = snap.val(); 
+        apks = []; 
+        if(data) Object.keys(data).forEach(k => apks.push({...data[k], firebaseKey: k})); 
+        apks.forEach(a => { if(!a.feedbacks) a.feedbacks = []; }); 
+        if(currentRole === 'admin') renderAdmin(); 
+        if(currentRole === 'client') renderClient(); 
+    });
+    onValue(ref(db, 'clients'), (snap) => { 
+        const data = snap.val(); 
+        clients = []; 
+        if(data) Object.keys(data).forEach(k => clients.push({...data[k], firebaseKey: k})); 
+        // Automatically refresh admin client list when clients change (real‑time)
+        if(currentRole === 'admin') renderClientList(); 
+        // Also try auto‑login for client panel if needed
+        if(clientPanelVisible && !currentRole) attemptAutoLogin();
+    });
+
+    function attemptAutoLogin() {
+        if(autoLoginPending) return;
+        const storedEmail = localStorage.getItem('last_client_email');
+        if(!storedEmail || currentRole || !clientPanelVisible) return;
+        const existingClient = clients.find(c => c.email && c.email.toLowerCase() === storedEmail.toLowerCase());
+        if(existingClient && !existingClient.isBanned) {
+            autoLoginPending = true;
+            document.getElementById('clientEmail').value = storedEmail;
+            document.getElementById('clientName').value = existingClient.name || '';
+            const opt = Array.from(document.getElementById('clientCountry').options).find(x => x.value === existingClient.country);
+            if(opt) document.getElementById('clientCountry').value = existingClient.country;
+            if(existingClient.avatar) { avatarBase64 = existingClient.avatar; document.getElementById('avatarPreview').innerHTML = `<img src="${existingClient.avatar}">`; }
+            else { avatarBase64 = ""; document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-user-ninja"></i>'; }
+            doLogin(true);
+        }
+        autoLoginPending = false;
+    }
 
     function toast(m, t) { const el = document.createElement('div'); el.className = 'toast'; el.textContent = (t==='ok'?'✅ ':(t==='err'?'❌ ':'ℹ️ ')) + m; document.body.appendChild(el); setTimeout(() => el.remove(), 3000); }
     function esc(s) { return String(s||'').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); }
-    function updateBroadcastUI() { if(currentRole === 'admin') { const statusEl = document.getElementById('broadcastStatus'); if(statusEl) statusEl.innerHTML = broadcastData.message ? `<span style="color:#fbbf24;">📢 Active: "${broadcastData.message}"</span><span style="font-size:0.65rem;opacity:0.5;margin-left:8px;">${new Date(broadcastData.timestamp).toLocaleString()}</span>` : '<span style="opacity:0.5;">No active broadcast</span>'; if(broadcastData.message) document.getElementById('broadcastMessage').value = broadcastData.message; }
-        if(currentRole === 'client') { const banner = document.getElementById('broadcastBanner'); if(banner) { const dismissed = sessionStorage.getItem('broadcastDismissed'); if(broadcastData.message && !dismissed) { banner.classList.remove('hidden'); document.getElementById('broadcastText').textContent = broadcastData.message; document.getElementById('broadcastTime').textContent = new Date(broadcastData.timestamp).toLocaleString(); } else banner.classList.add('hidden'); } } }
+    function updateBroadcastUI() { 
+        if(currentRole === 'admin') { 
+            const statusEl = document.getElementById('broadcastStatus'); 
+            if(statusEl) statusEl.innerHTML = broadcastData.message ? `<span style="color:#fbbf24;">📢 Active: "${broadcastData.message}"</span><span style="font-size:0.65rem;opacity:0.5;margin-left:8px;">${new Date(broadcastData.timestamp).toLocaleString()}</span>` : '<span style="opacity:0.5;">No active broadcast</span>'; 
+            if(broadcastData.message) document.getElementById('broadcastMessage').value = broadcastData.message; 
+        }
+        if(currentRole === 'client') { 
+            const banner = document.getElementById('broadcastBanner'); 
+            if(banner) { 
+                const dismissed = sessionStorage.getItem('broadcastDismissed'); 
+                if(broadcastData.message && !dismissed) { 
+                    banner.classList.remove('hidden'); 
+                    document.getElementById('broadcastText').textContent = broadcastData.message; 
+                    document.getElementById('broadcastTime').textContent = new Date(broadcastData.timestamp).toLocaleString(); 
+                } else banner.classList.add('hidden'); 
+            } 
+        } 
+    }
     window.sendBroadcast = function() { const msg = document.getElementById('broadcastMessage').value.trim(); if(!msg) return toast("Type a message first","err"); set(ref(db, 'broadcast'), { message: msg, timestamp: new Date().toISOString() }).then(() => toast("Broadcast sent to all clients!","ok")); };
     window.clearBroadcast = function() { set(ref(db, 'broadcast'), { message: "", timestamp: "" }).then(() => { document.getElementById('broadcastMessage').value = ''; toast("Broadcast cleared","ok"); }); };
     window.dismissBroadcast = function() { sessionStorage.setItem('broadcastDismissed', 'true'); document.getElementById('broadcastBanner').classList.add('hidden'); };
     window.resetToOldAvatar = function() { avatarBase64 = ""; document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-user-ninja"></i>'; toast("Old default avatar set","ok"); };
-    window.resetClientAvatarToOld = function() { if(currentClient) { update(ref(db, `clients/${currentClient.firebaseKey}`), { avatar: null }).then(() => { currentClient.avatar = null; updateClientAvatarDisplay(); toast("Reverted to old school avatar!","ok"); renderClientList(); }); } };
+    window.resetClientAvatarToOld = function() { if(currentClient) { update(ref(db, `clients/${currentClient.firebaseKey}`), { avatar: null }).then(() => { currentClient.avatar = null; updateClientAvatarDisplay(); renderClientList(); toast("Reverted to old school avatar!","ok"); }); } };
     function updateClientAvatarDisplay() { const ai = document.getElementById('clientAvatarDisplay'); const af = document.getElementById('clientAvatarFallback'); if(currentClient && currentClient.avatar) { ai.src = currentClient.avatar; ai.style.display = 'inline-block'; af.style.display = 'none'; } else { ai.style.display = 'none'; af.style.display = 'inline-block'; } }
     window.handleAvatarUpload = function(e) { const f = e.target.files[0]; if(!f) return; if(f.size > 2000000) return toast("Max 2MB","err"); const r = new FileReader(); r.onload = ev => { avatarBase64 = ev.target.result; document.getElementById('avatarPreview').innerHTML = `<img src="${avatarBase64}">`; }; r.readAsDataURL(f); };
-    window.selectRole = function(r) { document.getElementById('roleSelector').classList.add('hidden'); document.getElementById('adminLoginPanel').classList[r==='admin'?'remove':'add']('hidden'); document.getElementById('clientLoginPanel').classList[r==='client'?'remove':'add']('hidden'); if(r==='client') { const em = localStorage.getItem('last_client_email'); if(em) { document.getElementById('clientEmail').value = em; setTimeout(autoLogin, 200); } } };
-    function autoLogin() { const em = document.getElementById('clientEmail').value.trim().toLowerCase(); const c = clients.find(x => x.email.toLowerCase() === em); if(c && !c.isBanned) { document.getElementById('clientName').value = c.name; if(c.avatar) { avatarBase64 = c.avatar; document.getElementById('avatarPreview').innerHTML = `<img src="${c.avatar}">`; } else { document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-user-ninja"></i>'; } const opt = Array.from(document.getElementById('clientCountry').options).find(x => x.value === c.country); if(opt) document.getElementById('clientCountry').value = c.country; doLogin(true); } }
-    window.adminLogin = function() { if(document.getElementById('adminPassword').value === 'REX0303') { currentRole = 'admin'; document.getElementById('adminLoginPanel').classList.add('hidden'); document.getElementById('adminDashboard').classList.remove('hidden'); updateBroadcastUI(); renderAdmin(); renderClientList(); toast("Welcome Admin!","ok"); } else document.getElementById('adminLoginError').textContent = "Wrong password"; };
+    window.selectRole = function(r) { 
+        document.getElementById('roleSelector').classList.add('hidden'); 
+        document.getElementById('adminLoginPanel').classList[r==='admin'?'remove':'add']('hidden'); 
+        document.getElementById('clientLoginPanel').classList[r==='client'?'remove':'add']('hidden'); 
+        if(r==='client') { 
+            clientPanelVisible = true; 
+            autoLoginPending = false; 
+            const storedEmail = localStorage.getItem('last_client_email'); 
+            if(storedEmail) document.getElementById('clientEmail').value = storedEmail; 
+            attemptAutoLogin(); 
+        } else { 
+            clientPanelVisible = false; 
+        } 
+    };
+    window.adminLogin = function() { 
+        if(document.getElementById('adminPassword').value === 'REX0303') { 
+            currentRole = 'admin'; 
+            document.getElementById('adminLoginPanel').classList.add('hidden'); 
+            document.getElementById('adminDashboard').classList.remove('hidden'); 
+            updateBroadcastUI(); 
+            renderAdmin(); 
+            renderClientList(); 
+            toast("Welcome Admin!","ok"); 
+        } else document.getElementById('adminLoginError').textContent = "Wrong password"; 
+    };
     window.clientLogin = () => doLogin(false);
-    function doLogin(auto) { const n = document.getElementById('clientName').value.trim(); const co = document.getElementById('clientCountry').value; const em = document.getElementById('clientEmail').value.trim(); if(!n) return toast("Name required","err"); if(!em || !em.includes('@')) return toast("Valid email required","err"); let ex = clients.find(c => c.email.toLowerCase() === em.toLowerCase()); if(ex && ex.isBanned) return toast("Account banned","err"); if(ex) { const u = {}; u[`${ex.firebaseKey}/lastLogin`] = new Date().toISOString(); u[`${ex.firebaseKey}/name`] = n; u[`${ex.firebaseKey}/country`] = co; if(avatarBase64) u[`${ex.firebaseKey}/avatar`] = avatarBase64; else if(avatarBase64 === "") u[`${ex.firebaseKey}/avatar`] = null; update(ref(db, 'clients'), u); currentClient = {...ex, name: n, country: co, avatar: avatarBase64 || null}; } else { const nr = push(ref(db, 'clients')); const nc = { name: n, country: co, email: em, isBanned: false, avatar: avatarBase64 || null, registrationDate: new Date().toISOString(), lastLogin: new Date().toISOString() }; set(nr, nc); currentClient = {...nc, firebaseKey: nr.key}; } localStorage.setItem('last_client_email', em); currentRole = 'client'; document.getElementById('clientLoginPanel').classList.add('hidden'); document.getElementById('clientDashboard').classList.remove('hidden'); document.getElementById('clientUserNameDisplay').textContent = currentClient.name; document.getElementById('clientCountryDisplay').textContent = currentClient.country; sessionStorage.removeItem('broadcastDismissed'); updateBroadcastUI(); updateClientAvatarDisplay(); renderClient(); if(!auto) toast(`Welcome ${esc(n)}!`,"ok"); }
-    window.logout = function() { currentRole = null; currentClient = null; avatarBase64 = ""; ['adminDashboard','clientDashboard','adminLoginPanel','clientLoginPanel'].forEach(id => document.getElementById(id).classList.add('hidden')); document.getElementById('roleSelector').classList.remove('hidden'); document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-user-ninja"></i>'; if(document.getElementById('broadcastBanner')) document.getElementById('broadcastBanner').classList.add('hidden'); };
-    window.addAPK = function() { const n = document.getElementById('appName').value.trim(); const i = document.getElementById('logoUrl').value.trim(); const l = document.getElementById('downloadLink').value.trim(); if(!n || !i || !l) return toast("Name, Icon URL & Link required","err"); const nr = push(ref(db, 'apks')); set(nr, { name: n, version: document.getElementById('appVersion').value.trim() || "1.0", date: new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }), category: document.getElementById('appCategory').value.trim() || "General", type: document.getElementById('appType').value, icon: i, description: document.getElementById('appDesc').value.trim() || "", downloadUrl: l, feedbacks: [] }).then(() => { ['appName','appVersion','logoUrl','appCategory','appDesc','downloadLink'].forEach(id => document.getElementById(id).value = ''); toast("APK Published — instantly synced!","ok"); clearAdminSearch(); renderAdmin(); }).catch(err => toast(err.message,"err")); };
+    function doLogin(auto) { 
+        const n = document.getElementById('clientName').value.trim(); 
+        const co = document.getElementById('clientCountry').value; 
+        const em = document.getElementById('clientEmail').value.trim(); 
+        if(!n) return toast("Name required","err"); 
+        if(!em || !em.includes('@')) return toast("Valid email required","err"); 
+        let ex = clients.find(c => c.email && c.email.toLowerCase() === em.toLowerCase()); 
+        if(ex && ex.isBanned) return toast("Account banned","err"); 
+        if(ex) { 
+            const updates = {}; 
+            updates[`${ex.firebaseKey}/lastLogin`] = new Date().toISOString(); 
+            updates[`${ex.firebaseKey}/name`] = n; 
+            updates[`${ex.firebaseKey}/country`] = co; 
+            if(avatarBase64 !== undefined && avatarBase64 !== null) { 
+                if(avatarBase64 === "") updates[`${ex.firebaseKey}/avatar`] = null; 
+                else if(avatarBase64) updates[`${ex.firebaseKey}/avatar`] = avatarBase64; 
+            } 
+            update(ref(db, 'clients'), updates); 
+            currentClient = {...ex, name: n, country: co, avatar: (avatarBase64 === "" ? null : avatarBase64 || ex.avatar)}; 
+        } else { 
+            const nr = push(ref(db, 'clients')); 
+            const nc = { name: n, country: co, email: em, isBanned: false, avatar: avatarBase64 || null, registrationDate: new Date().toISOString(), lastLogin: new Date().toISOString() }; 
+            set(nr, nc); 
+            currentClient = {...nc, firebaseKey: nr.key}; 
+        } 
+        localStorage.setItem('last_client_email', em); 
+        currentRole = 'client'; 
+        document.getElementById('clientLoginPanel').classList.add('hidden'); 
+        document.getElementById('clientDashboard').classList.remove('hidden'); 
+        document.getElementById('clientUserNameDisplay').textContent = currentClient.name; 
+        document.getElementById('clientCountryDisplay').textContent = currentClient.country; 
+        sessionStorage.removeItem('broadcastDismissed'); 
+        updateBroadcastUI(); 
+        updateClientAvatarDisplay(); 
+        renderClient(); 
+        if(!auto) toast(`Welcome ${esc(n)}!`,"ok"); 
+    }
+    window.logout = function() { 
+        currentRole = null; 
+        currentClient = null; 
+        avatarBase64 = ""; 
+        clientPanelVisible = false; 
+        autoLoginPending = false; 
+        ['adminDashboard','clientDashboard','adminLoginPanel','clientLoginPanel'].forEach(id => document.getElementById(id).classList.add('hidden')); 
+        document.getElementById('roleSelector').classList.remove('hidden'); 
+        document.getElementById('avatarPreview').innerHTML = '<i class="fas fa-user-ninja"></i>'; 
+        if(document.getElementById('broadcastBanner')) document.getElementById('broadcastBanner').classList.add('hidden'); 
+    };
+    window.addAPK = function() { 
+        const n = document.getElementById('appName').value.trim(); 
+        const i = document.getElementById('logoUrl').value.trim(); 
+        const l = document.getElementById('downloadLink').value.trim(); 
+        if(!n || !i || !l) return toast("Name, Icon URL & Link required","err"); 
+        const nr = push(ref(db, 'apks')); 
+        set(nr, { name: n, version: document.getElementById('appVersion').value.trim() || "1.0", date: new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }), category: document.getElementById('appCategory').value.trim() || "General", type: document.getElementById('appType').value, icon: i, description: document.getElementById('appDesc').value.trim() || "", downloadUrl: l, feedbacks: [] }).then(() => { 
+            ['appName','appVersion','logoUrl','appCategory','appDesc','downloadLink'].forEach(id => document.getElementById(id).value = ''); 
+            toast("APK Published — instantly synced!","ok"); 
+            clearAdminSearch(); 
+            renderAdmin(); 
+        }).catch(err => toast(err.message,"err")); 
+    };
     window.clearAdminSearch = function() { const searchBox = document.getElementById('adminSearch'); if(searchBox) { searchBox.value = ''; renderAdmin(); } };
     window.deleteAPK = function(fk) { if(confirm("Delete permanently?")) { remove(ref(db, `apks/${fk}`)).then(() => toast("APK removed","ok")); } };
     window.editAPK = function(fk) { const a = apks.find(a => a.firebaseKey === fk); if(a) { const n = prompt("Name:", a.name); if(n) a.name = n; const v = prompt("Version:", a.version); if(v) a.version = v; const u = prompt("Icon URL:", a.icon); if(u) a.icon = u; const d = prompt("Download:", a.downloadUrl); if(d) a.downloadUrl = d; update(ref(db, `apks/${fk}`), a); toast("App updated","ok"); } };
@@ -255,7 +376,13 @@
     window.deleteUser = function(fk) { const c = clients.find(c => c.firebaseKey === fk); if(c && confirm(`Delete ${c.name}?`)) { remove(ref(db, `clients/${fk}`)); toast("User deleted","ok"); } };
     window.clientAddFeedback = function(fk) { if(!currentClient) return toast("Login required","err"); const input = document.getElementById(`fb_${fk}`); if(!input) return; const comment = input.value.trim(); if(!comment) return toast("Write a comment","err"); const a = apks.find(a => a.firebaseKey === fk); if(a) { if(!a.feedbacks) a.feedbacks = []; a.feedbacks.push({user: currentClient.name, comment}); update(ref(db, `apks/${fk}/feedbacks`), a.feedbacks).then(() => { input.value = ''; toast("Comment posted!","ok"); }).catch(err => toast(err.message,"err")); } };
     window.downloadApk = function(url, name) { window.open(url, '_blank'); toast(`Downloading ${name}...`,"ok"); };
-    function renderClientList() { const c = document.getElementById('adminClientsList'); if(!c) return; document.getElementById('totalClients').innerText = clients.length; if(!clients.length) { c.innerHTML = '<div style="padding:2rem;text-align:center;opacity:0.5;">No clients yet</div>'; return; } c.innerHTML = clients.map(x => `<div style="background:rgba(255,255,255,0.05);border-radius:1rem;padding:1rem;margin-bottom:0.8rem;border-left:4px solid ${x.isBanned?'#ef4444':'#10b981'}"><div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.5rem;">${x.avatar?`<img src="${x.avatar}" style="width:45px;height:45px;border-radius:50%;object-fit:cover;border:2px solid #c084fc;">`:'<i class="fas fa-user-ninja" style="font-size:2.5rem;color:#c084fc;"></i>'}<div><strong>${esc(x.name)}</strong> <span class="country-badge">${esc(x.country)}</span></div></div><div style="font-size:0.75rem;">📧 ${esc(x.email)}</div><div style="font-size:0.65rem;opacity:0.6;">📅 ${new Date(x.registrationDate).toLocaleDateString()} | 🕐 ${new Date(x.lastLogin).toLocaleString()}</div>${x.isBanned?'<span class="banned-badge">🚫 BANNED</span>':'<span class="active-badge">✅ Active</span>'}<div style="margin-top:10px;display:flex;gap:0.5rem;"><button class="${x.isBanned?'ban-btn unban-btn':'ban-btn'}" onclick="toggleBan('${x.firebaseKey}')">${x.isBanned?'✅ Unban':'🔨 Ban'}</button><button class="delete-user-btn" onclick="deleteUser('${x.firebaseKey}')">🗑️ Delete</button></div></div>`).join(''); }
+    window.renderClientList = function() { 
+        const c = document.getElementById('adminClientsList'); 
+        if(!c) return; 
+        document.getElementById('totalClients').innerText = clients.length; 
+        if(!clients.length) { c.innerHTML = '<div style="padding:2rem;text-align:center;opacity:0.5;">No clients yet</div>'; return; } 
+        c.innerHTML = clients.map(x => `<div style="background:rgba(255,255,255,0.05);border-radius:1rem;padding:1rem;margin-bottom:0.8rem;border-left:4px solid ${x.isBanned?'#ef4444':'#10b981'}"><div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.5rem;">${x.avatar?`<img src="${x.avatar}" style="width:45px;height:45px;border-radius:50%;object-fit:cover;border:2px solid #c084fc;">`:'<i class="fas fa-user-ninja" style="font-size:2.5rem;color:#c084fc;"></i>'}<div><strong>${esc(x.name)}</strong> <span class="country-badge">${esc(x.country)}</span></div></div><div style="font-size:0.75rem;">📧 ${esc(x.email)}</div><div style="font-size:0.65rem;opacity:0.6;">📅 ${new Date(x.registrationDate).toLocaleDateString()} | 🕐 ${new Date(x.lastLogin).toLocaleString()}</div>${x.isBanned?'<span class="banned-badge">🚫 BANNED</span>':'<span class="active-badge">✅ Active</span>'}<div style="margin-top:10px;display:flex;gap:0.5rem;"><button class="${x.isBanned?'ban-btn unban-btn':'ban-btn'}" onclick="toggleBan('${x.firebaseKey}')">${x.isBanned?'✅ Unban':'🔨 Ban'}</button><button class="delete-user-btn" onclick="deleteUser('${x.firebaseKey}')">🗑️ Delete</button></div></div>`).join(''); 
+    };
     function renderAdmin() { const s = document.getElementById('adminSearch')?.value?.toLowerCase() || ''; const filtered = apks.filter(a => a.name.toLowerCase().includes(s)); document.getElementById('adminTotalApps').innerText = apks.length; document.getElementById('adminAppsContainer').innerHTML = filtered.length ? filtered.map(a => `<div class="apk-card"><div class="app-icon"><img src="${esc(a.icon)}" onerror="this.src='https://placehold.co/65'"></div><div class="app-name">${esc(a.name)}</div><div class="app-version">v${esc(a.version)}</div><span class="app-category">${esc(a.category)}</span><div style="margin-top:0.8rem;display:flex;gap:0.5rem;"><button class="btn-primary" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="editAPK('${a.firebaseKey}')">✏️</button><button class="btn-primary btn-danger" style="padding:0.4rem 0.8rem;font-size:0.7rem;" onclick="deleteAPK('${a.firebaseKey}')">🗑️</button></div><div class="feedback-section"><strong>💬 Comments (${a.feedbacks.length})</strong>${a.feedbacks.map((fb,i)=>`<div class="feedback-item"><span class="feedback-user">${esc(fb.user)}</span><span class="feedback-comment">${esc(fb.comment)}</span><span onclick="deleteFeedback('${a.firebaseKey}',${i})" style="color:#ef4444;cursor:pointer;">✖</span></div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;padding:0.3rem;">No comments yet</div>'}</div></div>`).join('') : '<div style="text-align:center;padding:2rem;opacity:0.5;">No APKs found</div>'; }
     function renderClient() { if(!currentClient) return; const s = document.getElementById('clientSearch')?.value?.toLowerCase() || ''; const featured = apks.filter(a => a.type === 'featured' && a.name.toLowerCase().includes(s)); const recent = apks.filter(a => a.type === 'recent' && a.name.toLowerCase().includes(s)); document.getElementById('clientTotalApps').innerText = apks.length; document.getElementById('featuredGrid').innerHTML = featured.length ? featured.map(a => clientCard(a)).join('') : '<div style="padding:2rem;text-align:center;opacity:0.5;">No featured apps</div>'; document.getElementById('recentGrid').innerHTML = recent.length ? recent.map(a => clientCard(a)).join('') : '<div style="padding:2rem;text-align:center;opacity:0.5;">No recent apps</div>'; }
     function clientCard(a) { return `<div class="client-card"><div class="app-icon"><img src="${esc(a.icon)}" onerror="this.src='https://placehold.co/65'"></div><div class="app-name">${esc(a.name)}</div><div class="app-version">v${esc(a.version)}</div><span class="app-category">${esc(a.category)}</span><button class="premium-download" onclick="downloadApk('${esc(a.downloadUrl)}','${esc(a.name)}')"><i class="fas fa-download"></i> Download APK</button><div class="feedback-section"><strong>💬 Comments (${a.feedbacks.length})</strong><div style="max-height:120px;overflow-y:auto;margin-bottom:0.5rem;">${a.feedbacks.map(f => `<div class="feedback-item"><span class="feedback-user">${esc(f.user)}</span><span class="feedback-comment">${esc(f.comment)}</span></div>`).join('') || '<div style="opacity:0.5;font-size:0.7rem;">No comments yet</div>'}</div><textarea id="fb_${a.firebaseKey}" class="search-input" style="margin-top:0.5rem;padding:0.6rem;font-size:0.75rem;" rows="2" placeholder="Write a comment..."></textarea><button class="btn-primary" style="width:100%;margin-top:0.5rem;padding:0.6rem;" onclick="window.clientAddFeedback('${a.firebaseKey}')"><i class="fas fa-paper-plane"></i> Post Comment</button></div></div>`; }
